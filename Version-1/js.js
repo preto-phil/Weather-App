@@ -44,3 +44,18 @@ async function getWeather() {
 
 }
 
+/* Data I want to process
+
+Under current
+- condition -> text and maybe icon   *** Self explanatory - background will depend on condition
+- cloud *** Cloud coverage i think
+- is_day *** Basically whether it's day or night
+- temp_c and temp_f *** toggle btw the 2
+- wind_kph and wind_mph + maybe wind_dir
+- precip_mm *** rain chance ???
+
+Under location
+- localtime
+- name ?
+
+*/
