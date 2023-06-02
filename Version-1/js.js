@@ -44,6 +44,17 @@ async function getWeather() {
 
 }
 
+/*  Create JSON object with the result from getWeather() 
+
+// Stringify?
+// Parse?
+
+// condition = result.data.current.condition.text
+// cloud = result.data.current.loud
+// etc..
+
+*/
+
 /* Data I want to process
 
 Under current
