@@ -62,6 +62,10 @@ function parseData(result) {
     country: result.location.country,
     localTime: result.location.localtime,
   }
+
+  // Call function
+  assignLocationValues(locationData);
+
   // Console log to test whether correct
   console.log(weatherData);
   console.log(locationData);
@@ -70,6 +74,28 @@ function parseData(result) {
     locationData,
   }
 }
+
+function assignLocationValues(locData) {
+  // Get the reference to the HTML div elements
+  const locationDiv = document.getElementById('location');
+  let locationData = locData;
+
+  locationDiv.textContent = `${locationData.city}, ${locationData.region}, ${locationData.country}`;
+}
+
+const temperatureDiv = document.getElementById('temperature');
+const realFeelDiv = document.getElementById('realfeel');
+const humidityDiv = document.getElementById('humidity');
+const windDiv = document.getElementById('wind');
+const conditionDiv = document.getElementById('condition');
+
+
+/* 
+// Update the location div
+locationDiv.textContent = `${locationData.city}, ${locationData.region}, ${locationData.country}`;
+
+ */
+//
 
 
 /* Data I want to process
