@@ -29,27 +29,46 @@ searchBtn.addEventListener('click', () => {
 async function getWeather() {
   try {
     // Fetch weather data from API
-    let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=e0d3c7ebf93b4fb48c1121421233105&q=${searchInputValue}`, { mode: 'cors' });
-    let result = await response.json();
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=e0d3c7ebf93b4fb48c1121421233105&q=${searchInputValue}`, { mode: 'cors' });
+    const result = await response.json();
     // Call parseData function to extract and process some weatherData
     parseData(result);
     console.log(result);
     return result;
   } catch (err) {
-    throw new Error(`Oops! ${err}`)
+    throw new Error(`Error fetching weather data: ${err}`)
   }
 }
 
+/* Should perhaps make use of destructuring for weatherData and locationData */
 
 // Function to parse weather data
 function parseData(result) {
   // Extract necessary weather data
   const weatherData = {
   condition: result.current.condition.text,
-  temperature_c: result.current.temp_c,    
+  temp_c: result.current.temp_c,
+  temp_f: result.current.temp_f,
+  wind_k: result.current.wind_kph,
+  wind_m: result.current.wind_mph,
+  humidity: result.current.humidity,
+  realFeel_c: result.current.feelslike_c,
+  realFeel_f: result.current.feelslike_f,
   }
-  console.log(weatherData)
-  return weatherData;
+  // Extract necessary location data
+  const locationData = {
+    city: result.location.name,
+    region: result.location.region,
+    country: result.location.country,
+    localTime: result.location.localtime,
+  }
+  // Console log to test whether correct
+  console.log(weatherData);
+  console.log(locationData);
+  return {
+    weatherData,
+    locationData,
+  }
 }
 
 
