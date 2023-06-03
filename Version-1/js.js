@@ -65,6 +65,7 @@ function parseData(result) {
 
   // Call function
   assignLocationValues(locationData);
+  assignWeatherValues(weatherData);
 
   // Console log to test whether correct
   console.log(weatherData);
@@ -75,12 +76,29 @@ function parseData(result) {
   }
 }
 
-function assignLocationValues(locData) {
+function assignLocationValues(lData) {
   // Get the reference to the HTML div elements
   const locationDiv = document.getElementById('location');
-  let locationData = locData;
+  let locationData = lData;
 
   locationDiv.textContent = `${locationData.city}, ${locationData.region}, ${locationData.country}`;
+}
+
+
+function assignWeatherValues(wData) {
+  // Get the reference to the HTML div elements
+  const temperatureDiv = document.getElementById('temperature');
+  const realFeelDiv = document.getElementById('realfeel');
+  const humidityDiv = document.getElementById('humidity');
+  const windDiv = document.getElementById('wind');
+  const conditionDiv = document.getElementById('condition');
+  let weatherData = wData;
+
+  temperatureDiv.textContent = `${weatherData.temp_c}`;
+  realFeelDiv.textContent = `${weatherData.realFeel_c}`;
+  humidityDiv.textContent = `${weatherData.humidity}`;
+  windDiv.textContent = `${weatherData.wind_k}`;
+  conditionDiv.textContent = `${weatherData.condition}`;
 }
 
 const temperatureDiv = document.getElementById('temperature');
