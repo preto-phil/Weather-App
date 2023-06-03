@@ -33,6 +33,8 @@ async function getWeather() {
 
     let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=e0d3c7ebf93b4fb48c1121421233105&q=${searchInputValue}`, { mode: 'cors' });
     let result = await response.json();
+
+    parseData(result);
     console.log(result);
     return result;
 
@@ -41,8 +43,37 @@ async function getWeather() {
     throw new Error(`Oops! ${err}`)
 
   }
-
 }
+
+async function parseData(result) {
+  let object = {
+  condition: result.current.condition.text,
+  temperature_c: result.current.temp_c,    
+  }
+  console.log(object)
+}
+
+/* Function that processes JSON data returned from getWeather()
+
+*/
+
+
+/* 
+
+parseData(getWeather());
+ */
+/* 
+getWeather().then(() => {
+  let object = {
+    condition: result.data.current.condition.text,
+
+  }
+  console.log(object)
+  return object;
+}); */
+
+
+
 
 /*  Create JSON object with the result from getWeather() 
 
