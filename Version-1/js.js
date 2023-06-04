@@ -108,7 +108,7 @@ function assignWeatherValues(wData) {
 
 function parseHourlyData(result) {
 
-  let hoursData = {};
+  let hoursData = [];
 
   for (let i = 0; i < 24; i++) {
     let results = result.forecast.forecastday[0].hour[i];
@@ -130,9 +130,9 @@ function parseHourlyData(result) {
 
 function parseDailyData(result) {
 
-  let dailyData = {};
+  let dailyData = [];
 
-  for (let i = 1; i < 8; i++) {
+  for (let i = 0; i < 8; i++) {
     let results = result.forecast.forecastday[i];
     dailyData[i] = {
       date: results.date,
@@ -147,4 +147,41 @@ function parseDailyData(result) {
     }
   }
   console.log(dailyData);
+  return dailyData;
 }
+
+
+/* function assignHourlyValues(hourlyData) {
+
+  const hourlyDiv = document.getElementById('hourly');
+
+  for (let i in hourlyData) {
+    const item = document.createElement('div');
+    item.classList.add("item", "item-" + i);
+    item.innerHTML = 
+    `
+    <div class="hourly hour-${1}temperature"></div>
+    <div class="realfeel"></div>
+    <div class="humidity"></div>
+    <div class="wind"></div>
+    <div class="condition"></div>
+    <div class="precipitation"></div>` 
+  }
+
+
+
+  const temperatureDiv = document.getElementById('temperature');
+  const realFeelDiv = document.getElementById('realfeel');
+  const humidityDiv = document.getElementById('humidity');
+  const windDiv = document.getElementById('wind');
+  const conditionDiv = document.getElementById('condition');
+  const precipitationDiv = document.getElementById('precipitation');
+  let weatherData = wData;
+
+  temperatureDiv.textContent = `Temperature: ${weatherData.temp_c}`;
+  realFeelDiv.textContent = `Real feel: ${weatherData.realFeel_c}`;
+  humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
+  windDiv.textContent = `Wind speed: ${weatherData.wind_k}`;
+  conditionDiv.textContent = `Condition: ${weatherData.condition}`;
+  precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}mm`;
+} */
