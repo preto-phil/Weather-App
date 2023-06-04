@@ -104,10 +104,10 @@ function assignWeatherValues(wData) {
   const precipitationDiv = document.getElementById('precipitation');
   let weatherData = wData;
 
-  temperatureDiv.textContent = `${weatherData.temp_c}`;
-  realFeelDiv.textContent = `${weatherData.realFeel_c}`;
-  humidityDiv.textContent = `${weatherData.humidity}`;
-  windDiv.textContent = `${weatherData.wind_k}`;
-  conditionDiv.textContent = `${weatherData.condition}`;
-  precipitationDiv.textContent = `${weatherData.precip_mm}`;
+  temperatureDiv.textContent = `Temperature: ${weatherData.temp_c}`;
+  realFeelDiv.textContent = `Real feel: ${weatherData.realFeel_c}`;
+  humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
+  windDiv.textContent = `Wind speed: ${weatherData.wind_k}`;
+  conditionDiv.textContent = `Condition: ${weatherData.condition}`;
+  precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}`;
 }
