@@ -1,13 +1,3 @@
-/*  Weather App
-
-Weather API: 'https://api.weatherapi.com/v1/current.json?key=e0d3c7ebf93b4fb48c1121421233105&q=thabazimbi'
-
-Forecast weather API: 'http://api.weatherapi.com/v1/forecast.json?key=e0d3c7ebf93b4fb48c1121421233105&q=thabazimbi'
-
-*/
-
-/*  */
-
 // Set initial / default search input value
 let searchInputValue = 'Thabazimbi';
 
@@ -38,8 +28,9 @@ async function getWeather() {
     // Fetch weather data from API
     const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=e0d3c7ebf93b4fb48c1121421233105&days=8&q=${searchInputValue}`, { mode: 'cors' });
     const result = await response.json();
-    // Call parseData function to extract and process some weatherData
-    parseData(result);
+    // Call parseCurrentData function to extract and process some weatherData
+    parseCurrentData(result);
+    parseHourlyData(result);
     console.log(result);
     return result;
   } catch (err) {
@@ -50,7 +41,7 @@ async function getWeather() {
 /* Should perhaps make use of destructuring for weatherData and locationData */
 
 // Function to parse weather data
-function parseData(result) {
+function parseCurrentData(result) {
   // Extract necessary weather data
   const weatherData = {
   condition: result.current.condition.text,
@@ -109,5 +100,29 @@ function assignWeatherValues(wData) {
   humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
   windDiv.textContent = `Wind speed: ${weatherData.wind_k}`;
   conditionDiv.textContent = `Condition: ${weatherData.condition}`;
-  precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}`;
+  precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}mm`;
+}
+
+
+
+function parseHourlyData(result) {
+
+  let hoursData = {};
+
+  for (let i = 0; i < 24; i++) {
+    let results = result.forecast.forecastday[0].hour[i];
+    hoursData[i] = {
+      condition: results.condition.text,
+      temp_c: results.temp_c,
+      temp_f: results.temp_f,
+      wind_k: results.wind_kph,
+      wind_m: results.wind_mph,
+      humidity: results.humidity,
+      realFeel_c: results.feelslike_c,
+      realFeel_f: results.feelslike_f,
+      precip_mm: results.precip_mm,
+    }
+  }
+
+  console.log(hoursData);
 }
