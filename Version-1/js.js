@@ -31,6 +31,7 @@ async function getWeather() {
     // Call parseCurrentData function to extract and process some weatherData
     parseCurrentData(result);
     parseHourlyData(result);
+    parseDailyData(result);
     console.log(result);
     return result;
   } catch (err) {
@@ -125,4 +126,25 @@ function parseHourlyData(result) {
   }
 
   console.log(hoursData);
+}
+
+function parseDailyData(result) {
+
+  let dailyData = {};
+
+  for (let i = 1; i < 8; i++) {
+    let results = result.forecast.forecastday[i];
+    dailyData[i] = {
+      date: results.date,
+      condition: results.day.condition.text,
+      mintemp_c: results.day.mintemp_c,
+      maxtemp_c: results.day.maxtemp_c,
+      mintemp_f: results.day.mintemp_f,
+      maxtemp_f: results.day.maxtemp_f,
+      daily_chance_of_rain: results.day.daily_chance_of_rain,
+      maxwind_kph: results.day.maxwind_kph,
+      maxwind_mph: results.day.maxwind_mph,
+    }
+  }
+  console.log(dailyData);
 }
