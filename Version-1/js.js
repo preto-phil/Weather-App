@@ -2,10 +2,17 @@
 
 Weather API: 'https://api.weatherapi.com/v1/current.json?key=e0d3c7ebf93b4fb48c1121421233105&q=thabazimbi'
 
+Forecast weather API: 'http://api.weatherapi.com/v1/forecast.json?key=e0d3c7ebf93b4fb48c1121421233105&q=thabazimbi'
+
 */
+
+/*  */
 
 // Set initial / default search input value
 let searchInputValue = 'Thabazimbi';
+
+// Load initial data
+window.onload = getWeather();
 
 // Get search button element
 const searchBtn = document.querySelector('#search-btn');
@@ -29,7 +36,7 @@ searchBtn.addEventListener('click', () => {
 async function getWeather() {
   try {
     // Fetch weather data from API
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=e0d3c7ebf93b4fb48c1121421233105&q=${searchInputValue}`, { mode: 'cors' });
+    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=e0d3c7ebf93b4fb48c1121421233105&days=8&q=${searchInputValue}`, { mode: 'cors' });
     const result = await response.json();
     // Call parseData function to extract and process some weatherData
     parseData(result);
@@ -69,14 +76,15 @@ function parseData(result) {
   assignWeatherValues(weatherData);
 
   // Console log to test whether correct
-  console.log(weatherData);
-  console.log(locationData);
+/*   console.log(weatherData);
+  console.log(locationData); */
   return {
     weatherData,
     locationData,
   }
 }
 
+// Function that adds text to location from API data
 function assignLocationValues(lData) {
   // Get the reference to the HTML div elements
   const locationDiv = document.getElementById('location');
@@ -85,7 +93,7 @@ function assignLocationValues(lData) {
   locationDiv.textContent = `${locationData.city}, ${locationData.region}, ${locationData.country}`;
 }
 
-
+// Function that adds text to weather from API data
 function assignWeatherValues(wData) {
   // Get the reference to the HTML div elements
   const temperatureDiv = document.getElementById('temperature');
@@ -103,28 +111,3 @@ function assignWeatherValues(wData) {
   conditionDiv.textContent = `${weatherData.condition}`;
   precipitationDiv.textContent = `${weatherData.precip_mm}`;
 }
-
-
-/* 
-// Update the location div
-locationDiv.textContent = `${locationData.city}, ${locationData.region}, ${locationData.country}`;
-
- */
-//
-
-
-/* Data I want to process
-
-Under current
-- condition -> text and maybe icon   *** Self explanatory - background will depend on condition
-- cloud *** Cloud coverage i think
-- is_day *** Basically whether it's day or night
-- temp_c and temp_f *** toggle btw the 2
-- wind_kph and wind_mph + maybe wind_dir
-- precip_mm *** rain chance ???
-
-Under location
-- localtime
-- name ?
-
-*/
