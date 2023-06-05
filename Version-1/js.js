@@ -150,7 +150,7 @@ function parseDailyData(result) {
     createDiv.classList.add('day', `day-${i}`);
     for (let j in dailyData) {
       let childDiv = document.createElement('div');
-      childDiv.classList.add('day-item', `${dailyData[j]}`)
+      childDiv.classList.add('day-item');
       childDiv.innerText = `${dailyData[j]}`;
       createDiv.appendChild(childDiv);
     }
