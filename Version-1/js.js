@@ -104,24 +104,62 @@ function assignWeatherValues(wData) {
   precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}mm`;
 }
 
-
-
 function parseHourlyData(result) {
 
   let hourlyData = [];
+  let currentDateTime = result.current.last_updated;
+  // trim everything before and after hour
+  let time = currentDateTime.slice(11, 13);
+/*   time = Math.floor(time); */
+  console.log(time);
+  let timeRemaining = 24 - (24- time);
+  let t = time;
+  let tr = 0;
 
   for (let i = 0; i < 24; i++) {
-    let results = result.forecast.forecastday[0].hour[i];
-    hourlyData[i] = {
-      condition: results.condition.text,
-      temp_c: results.temp_c,
-      temp_f: results.temp_f,
-      wind_k: results.wind_kph,
-      wind_m: results.wind_mph,
-      humidity: results.humidity,
-      realFeel_c: results.feelslike_c,
-      realFeel_f: results.feelslike_f,
-      precip_mm: results.precip_mm,
+    
+    if (t < 24) {
+      // day 0
+      // inhoud van for loop vir dag forecastday[0]
+      let results = result.forecast.forecastday[0].hour[i];
+      hourlyData[i] = {
+        hour: `${t}:00`,
+        condition: results.condition.text,
+        temp_c: results.temp_c,
+        temp_f: results.temp_f,
+        wind_k: results.wind_kph,
+        wind_m: results.wind_mph,
+        humidity: results.humidity,
+        realFeel_c: results.feelslike_c,
+        realFeel_f: results.feelslike_f,
+        precip_mm: results.precip_mm,
+      }
+      t++;
+    } else if (tr < timeRemaining) {
+      // day 1
+      // inhoud van for loop vir dag forecastday[1]
+      let results = result.forecast.forecastday[1].hour[tr];
+
+      let hour;
+      if (tr < 10) {
+        hour = `0${tr}`;
+      } else {
+        hour = tr;
+      }
+
+      hourlyData[i] = {
+        hour: `${hour}:00`,
+        condition: results.condition.text,
+        temp_c: results.temp_c,
+        temp_f: results.temp_f,
+        wind_k: results.wind_kph,
+        wind_m: results.wind_mph,
+        humidity: results.humidity,
+        realFeel_c: results.feelslike_c,
+        realFeel_f: results.feelslike_f,
+        precip_mm: results.precip_mm,
+      }
+      tr++;
     }
   }
 
@@ -194,101 +232,3 @@ function createHourlyDivs(hourlyData) {
     getHourlyDiv.appendChild(createDiv);
   }
 }
-
-// Next 24 hour instead of the 24 hours in current day
-
-let time = 'the current time';
-// trim everything before and after hour
-time = Math.floor(time);
-let timeRemaining = 24 - time;
-
-for (let t = time; t < 24; t++) {
-  // day 0
-  // inhoud van for loop vir dag forecastday[0]
-  hourlyData[i] = {
-    condition: results.condition.text,
-    temp_c: results.temp_c,
-    temp_f: results.temp_f,
-    wind_k: results.wind_kph,
-    wind_m: results.wind_mph,
-    humidity: results.humidity,
-    realFeel_c: results.feelslike_c,
-    realFeel_f: results.feelslike_f,
-    precip_mm: results.precip_mm,
-  }
-}
-for (let tr = 0; tr < timeRemaining; tr++) {
-  // day 1
-  // inhoud van for loop vir dag forecastday[1]
-}
-
-
-// using if statements within for loop
-
-function parseHourlyData(result) {
-
-  let hourlyData = [];
-  let currentDateTime = result.current.last_updated;
-  // trim everything before and after hour
-  let time = currentDateTime.slice(11, 13);
-/*   time = Math.floor(time); */
-  console.log(time);
-  let timeRemaining = 24 - (24- time);
-  let t = time;
-  let tr = 0;
-
-  for (let i = 0; i < 24; i++) {
-    
-    if (t < 24) {
-      // day 0
-      // inhoud van for loop vir dag forecastday[0]
-      let results = result.forecast.forecastday[0].hour[i];
-      hourlyData[i] = {
-        hour: `${t}:00`,
-        condition: results.condition.text,
-        temp_c: results.temp_c,
-        temp_f: results.temp_f,
-        wind_k: results.wind_kph,
-        wind_m: results.wind_mph,
-        humidity: results.humidity,
-        realFeel_c: results.feelslike_c,
-        realFeel_f: results.feelslike_f,
-        precip_mm: results.precip_mm,
-      }
-      t++;
-    } else if (tr < timeRemaining) {
-      // day 1
-      // inhoud van for loop vir dag forecastday[1]
-      let results = result.forecast.forecastday[1].hour[tr];
-
-      let hour;
-      if (tr < 10) {
-        hour = `0${tr}`;
-      } else {
-        hour = tr;
-      }
-
-      hourlyData[i] = {
-        hour: `${hour}:00`,
-        condition: results.condition.text,
-        temp_c: results.temp_c,
-        temp_f: results.temp_f,
-        wind_k: results.wind_kph,
-        wind_m: results.wind_mph,
-        humidity: results.humidity,
-        realFeel_c: results.feelslike_c,
-        realFeel_f: results.feelslike_f,
-        precip_mm: results.precip_mm,
-      }
-      tr++;
-    }
-  }
-
-  createHourlyDivs(hourlyData);
-
-  console.log(hourlyData);
-  return hourlyData;
-}
-
-
-
