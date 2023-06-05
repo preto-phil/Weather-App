@@ -267,4 +267,11 @@ function hourlySlider(index = 0) {
       hourlyDivs[i].style.display = 'flex';
     }
   }
+
+  const dots = document.getElementsByClassName("dot");
+  for (x = 0; x < dots.length; x++) {
+    dots[x].className = dots[x].className.replace(" active", "");
+  }
+  dots[sliderIndex - 1].className += " active";
+
 }
