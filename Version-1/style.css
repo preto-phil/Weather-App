@@ -16,7 +16,7 @@ body {
 }
 
 #current,
-#hourly,
+
 #daily,
 .previous,
 .next {
@@ -60,6 +60,10 @@ body {
 
   background-color: rgb(65, 95, 112);
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .next {
