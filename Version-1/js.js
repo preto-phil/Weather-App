@@ -228,10 +228,12 @@ for (let tr = 0; tr < timeRemaining; tr++) {
 function parseHourlyData(result) {
 
   let hourlyData = [];
-  let time = ;
+  let currentDateTime = result.current.last_updated;
   // trim everything before and after hour
-  time = Math.floor(time);
-  let timeRemaining = 24 - time;
+  let time = currentDateTime.slice(11, 13);
+/*   time = Math.floor(time); */
+  console.log(time);
+  let timeRemaining = 24 - (24- time);
   let t = time;
   let tr = 0;
 
