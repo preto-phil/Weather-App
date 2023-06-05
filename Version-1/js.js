@@ -131,6 +131,7 @@ function parseHourlyData(result) {
 function parseDailyData(result) {
 
   let dailyData = [];
+  const getDailyDiv = document.getElementById('daily');
 
   for (let i = 0; i < 8; i++) {
     let results = result.forecast.forecastday[i];
@@ -145,10 +146,47 @@ function parseDailyData(result) {
       maxwind_kph: results.day.maxwind_kph,
       maxwind_mph: results.day.maxwind_mph,
     }
+    let createDiv = document.createElement('div');
+    createDiv.classList.add('day', `day-${i}`);
+    for (let j in dailyData) {
+      let childDiv = document.createElement('div');
+      childDiv.classList.add('day-item', `${dailyData[j]}`)
+      childDiv.innerText = `${dailyData[j]}`;
+      createDiv.appendChild(childDiv);
+    }
+    getDailyDiv.appendChild(createDiv)
   }
   console.log(dailyData);
+  /* createDailyDivs(dailyData); */
   return dailyData;
 }
+
+
+/* 
+// Solution 1 - Using nested loops
+
+const getDailyDiv = document.getElementById('daily');
+
+function createDailyDivs(dailyData) {
+
+  // Used nested for loops
+  // Outer loop
+  for (let i = 0; i < 8; i++) {
+    let createDiv = document.createElement('div');
+    createDiv.classList.add(`day day-${i}`);
+    for (let j in dailyData) {
+      let childDiv = document.createElement('div');
+      childDiv.classList.add(`day-item ${dailyData[j]}`)
+      childDiv.innerText = `${dailyData[j]}`;
+      createDiv.appendChild(childDiv);
+    }
+    getDailyDiv.appendChild(createDiv)
+  }
+}
+ */
+
+
+
 
 
 /* function assignHourlyValues(hourlyData) {
