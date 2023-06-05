@@ -198,6 +198,7 @@ function parseDailyData(result) {
 function createDailyDivs(dailyData) {
 
   const getDailyDiv = document.getElementById('daily');
+  getDailyDiv.innerHTML = ';'
 
   for (let i = 0; i < dailyData.length; i++) {
     
@@ -217,6 +218,7 @@ function createDailyDivs(dailyData) {
 function createHourlyDivs(hourlyData) {
 
   const getHourlyDiv = document.getElementById('hourly');
+  getHourlyDiv.innerHTML = '';
 
   for (let i = 0; i < hourlyData.length; i++) {
     
@@ -232,3 +234,5 @@ function createHourlyDivs(hourlyData) {
     getHourlyDiv.appendChild(createDiv);
   }
 }
+
+
