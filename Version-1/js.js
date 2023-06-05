@@ -244,7 +244,7 @@ function parseHourlyData(result) {
       // inhoud van for loop vir dag forecastday[0]
       let results = result.forecast.forecastday[0].hour[i];
       hourlyData[i] = {
-        hour: 'the time at this interval',
+        hour: `${t}:00`,
         condition: results.condition.text,
         temp_c: results.temp_c,
         temp_f: results.temp_f,
@@ -261,6 +261,7 @@ function parseHourlyData(result) {
       // inhoud van for loop vir dag forecastday[1]
       let results = result.forecast.forecastday[1].hour[tr];
       hourlyData[i] = {
+        hour: `${tr}:00`,
         condition: results.condition.text,
         temp_c: results.temp_c,
         temp_f: results.temp_f,
