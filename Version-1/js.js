@@ -131,7 +131,6 @@ function parseHourlyData(result) {
 function parseDailyData(result) {
 
   let dailyData = [];
-  const getDailyDiv = document.getElementById('daily');
 
   for (let i = 0; i < 8; i++) {
     let results = result.forecast.forecastday[i];
@@ -146,80 +145,37 @@ function parseDailyData(result) {
       maxwind_kph: results.day.maxwind_kph,
       maxwind_mph: results.day.maxwind_mph,
     }
-    let createDiv = document.createElement('div');
-    createDiv.classList.add('day', `day-${i}`);
-    for (let j in dailyData[i]) {
-      let childDiv = document.createElement('div');
-      childDiv.classList.add('day-item', `${dailyData[i][j]}`);
-      childDiv.innerText = `${dailyData[i][j]}`;
-      createDiv.appendChild(childDiv);
-    }
-    getDailyDiv.appendChild(createDiv)
   }
+  
+  createDailyDivs(dailyData);
+
   console.log(dailyData);
-  /* createDailyDivs(dailyData); */
   return dailyData;
 }
 
 
-/* 
-// Solution 1 - Using nested loops
-
-const getDailyDiv = document.getElementById('daily');
-
 function createDailyDivs(dailyData) {
 
-  // Used nested for loops
-  // Outer loop
-  for (let i = 0; i < 8; i++) {
-    let createDiv = document.createElement('div');
-    createDiv.classList.add(`day day-${i}`);
-    for (let j in dailyData) {
-      let childDiv = document.createElement('div');
-      childDiv.classList.add(`day-item ${dailyData[j]}`)
-      childDiv.innerText = `${dailyData[j]}`;
+  const getDailyDiv = document.getElementById('daily');
+
+  for (let i = 0; i < dailyData.length; i++) {
+    
+    const createDiv = document.createElement('div');
+    createDiv.classList.add('day', `day-${i}`);
+
+    for (const [key, value] of Object.entries(dailyData[i])) {
+      const childDiv = document.createElement('div');
+      childDiv.classList.add('day-item', key);
+      childDiv.innerText = `${key}: ${value}`;
       createDiv.appendChild(childDiv);
     }
-    getDailyDiv.appendChild(createDiv)
+    getDailyDiv.appendChild(createDiv);
   }
 }
- */
 
 
 
 
 
-/* function assignHourlyValues(hourlyData) {
-
-  const hourlyDiv = document.getElementById('hourly');
-
-  for (let i in hourlyData) {
-    const item = document.createElement('div');
-    item.classList.add("item", "item-" + i);
-    item.innerHTML = 
-    `
-    <div class="hourly hour-${1}temperature"></div>
-    <div class="realfeel"></div>
-    <div class="humidity"></div>
-    <div class="wind"></div>
-    <div class="condition"></div>
-    <div class="precipitation"></div>` 
-  }
 
 
-
-  const temperatureDiv = document.getElementById('temperature');
-  const realFeelDiv = document.getElementById('realfeel');
-  const humidityDiv = document.getElementById('humidity');
-  const windDiv = document.getElementById('wind');
-  const conditionDiv = document.getElementById('condition');
-  const precipitationDiv = document.getElementById('precipitation');
-  let weatherData = wData;
-
-  temperatureDiv.textContent = `Temperature: ${weatherData.temp_c}`;
-  realFeelDiv.textContent = `Real feel: ${weatherData.realFeel_c}`;
-  humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
-  windDiv.textContent = `Wind speed: ${weatherData.wind_k}`;
-  conditionDiv.textContent = `Condition: ${weatherData.condition}`;
-  precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}mm`;
-} */
