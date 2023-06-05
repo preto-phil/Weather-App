@@ -286,31 +286,26 @@ function hourlySlider(num = 1) {
   }
 
   if (i === 1) {
-    for (let k = 0; k < 6; k++) {
-      getHourlyDivs[k].style.display = 'flex';
+    for (let j = 0; j < 6; j++) {
+      getHourlyDivs[j].style.display = 'flex';
     }
   }
 
   if (i === 2) {
     for (let j = 6; j < 12; j++) {
-      let getDiv = document.querySelector(`.hour-${j}`)
-      getDiv.style.display = 'flex';
+      getHourlyDivs[j].style.display = 'flex';
     }
   }
 
   if (i === 3) {
     for (let j = 12; j < 18; j++) {
-      let getDiv = document.querySelector(`.hour-${j}`)
-      getDiv.style.display = 'flex';
+      getHourlyDivs[j].style.display = 'flex';
     }
   }
 
   if (i === 4) {
     for (let j = 18; j < 24; j++) {
-      let getDiv = document.querySelector(`.hour-${j}`)
-      getDiv.style.display = 'flex';
+      getHourlyDivs[j].style.display = 'flex';
     }
   }
-
-
 }
