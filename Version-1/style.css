@@ -4,6 +4,7 @@ body {
 }
 
 #current,
+#hourly,
 #daily {
   display: none;
 }
