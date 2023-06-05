@@ -242,47 +242,8 @@ function createHourlyDivs(hourlyData) {
 }
 
 
-/* 
-DUII - Arrow slider
-*/
-
-/* let currentIndex = 1;
-hourlySlider(currentIndex);
-
-function setSlides(num) {
-  hourlySlider(currentIndex += num);
-}
-
-function timerSlide() {
-  setInterval(() => {
-    setSlides(1);
-  }, '5000')
-}
-
-timerSlide();
-
-
-function displaySlides(num) {
-  let x;
-  const slides = document.getElementsByClassName('imageSlides');
-  if (num > slides.length) { currentIndex = 1 }
-  if (num < 1) { currentIndex = slides.length }
-  for (x = 0; x < slides.length; x++) {
-    slides[x].style.display = 'none';
-  }
-  slides[currentIndex - 1].style.display = 'block';
-
-  const dots = document.getElementsByClassName("dot");
-  for (x = 0; x < dots.length; x++) {
-    dots[x].className = dots[x].className.replace(" active", "");
-  }
-  dots[currentIndex - 1].className += " active";
-} */
-
-
-
-function hourlySlider(num = 0) {
-  sliderIndex = sliderIndex + num;
+function hourlySlider(index = 0) {
+  sliderIndex = sliderIndex + index;
   console.log(sliderIndex);
   if (sliderIndex === 0) {
     sliderIndex = 4;
@@ -291,32 +252,19 @@ function hourlySlider(num = 0) {
     sliderIndex = 1;
   }
 
-  let getHourlyDivs = document.querySelectorAll(`.hours`);
-  for (let k = 0; k < getHourlyDivs.length; k++) {
-    getHourlyDivs[k].style.display = 'none';
-  }
+  let hourlyDivs = document.querySelectorAll(`.hours`);
+  hourlyDivs.forEach((div) => {
+    div.style.display = 'none';
+  });
 
-  if (sliderIndex === 1) {
-    for (let j = 0; j < 6; j++) {
-      getHourlyDivs[j].style.display = 'flex';
-    }
-  }
+  // Calculate the start and end indices for the range of divs to display
+  const start = (sliderIndex - 1) * 6;
+  const end = start + 6;
 
-  if (sliderIndex === 2) {
-    for (let j = 6; j < 12; j++) {
-      getHourlyDivs[j].style.display = 'flex';
-    }
-  }
-
-  if (sliderIndex === 3) {
-    for (let j = 12; j < 18; j++) {
-      getHourlyDivs[j].style.display = 'flex';
-    }
-  }
-
-  if (sliderIndex === 4) {
-    for (let j = 18; j < 24; j++) {
-      getHourlyDivs[j].style.display = 'flex';
+  // Display the selected range of hourly divs
+  for (let i = start; i < end; i++) {
+    if (hourlyDivs[i]) {
+      hourlyDivs[i].style.display = 'flex';
     }
   }
 }
