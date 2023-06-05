@@ -1,6 +1,9 @@
 // Set initial / default search input value
 let searchInputValue = 'Thabazimbi';
 
+// Set initial slider index
+let sliderIndex = 1;
+
 // Load initial data
 window.onload = () => {
   getWeather();
@@ -276,34 +279,42 @@ function displaySlides(num) {
   dots[currentIndex - 1].className += " active";
 } */
 
-function hourlySlider(num = 1) {
-  let i = 0 + num;
+
+
+function hourlySlider(num = 0) {
+  sliderIndex = sliderIndex + num;
+  console.log(sliderIndex);
+  if (sliderIndex === 0) {
+    sliderIndex = 4;
+  } 
+  if (sliderIndex === 5) {
+    sliderIndex = 1;
+  }
 
   let getHourlyDivs = document.querySelectorAll(`.hours`);
-  console.log(getHourlyDivs.length);
   for (let k = 0; k < getHourlyDivs.length; k++) {
     getHourlyDivs[k].style.display = 'none';
   }
 
-  if (i === 1) {
+  if (sliderIndex === 1) {
     for (let j = 0; j < 6; j++) {
       getHourlyDivs[j].style.display = 'flex';
     }
   }
 
-  if (i === 2) {
+  if (sliderIndex === 2) {
     for (let j = 6; j < 12; j++) {
       getHourlyDivs[j].style.display = 'flex';
     }
   }
 
-  if (i === 3) {
+  if (sliderIndex === 3) {
     for (let j = 12; j < 18; j++) {
       getHourlyDivs[j].style.display = 'flex';
     }
   }
 
-  if (i === 4) {
+  if (sliderIndex === 4) {
     for (let j = 18; j < 24; j++) {
       getHourlyDivs[j].style.display = 'flex';
     }

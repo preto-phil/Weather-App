@@ -18,8 +18,8 @@ body {
 #current,
 
 #daily,
-.previous,
-.next {
+#left-slider,
+#right-slider {
   /* display: none; */
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@ body {
   background-color: rgb(68, 65, 112);
 }
 
-.previous {
+#left-slider {
   grid-area: 3 / 1 / 4 / 2;
 }
 
@@ -66,7 +66,7 @@ body {
   flex-direction: column;
 }
 
-.next {
+#right-slider {
   grid-area: 3 / 3 / 4 / 4;
 }
 
@@ -75,4 +75,29 @@ body {
 
   background-color: rgb(68, 65, 112);
 
+}
+
+.images-slideshow {
+  max-width: 1200px;
+  position: relative;
+  margin: auto;
+}
+
+.slider-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  width: auto;
+  height: 20%;
+  padding: 8px 16px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
 }
