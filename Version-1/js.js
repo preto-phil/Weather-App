@@ -260,8 +260,16 @@ function parseHourlyData(result) {
       // day 1
       // inhoud van for loop vir dag forecastday[1]
       let results = result.forecast.forecastday[1].hour[tr];
+
+      let hour;
+      if (tr < 10) {
+        hour = `0${tr}`;
+      } else {
+        hour = tr;
+      }
+
       hourlyData[i] = {
-        hour: `${tr}:00`,
+        hour: `${hour}:00`,
         condition: results.condition.text,
         temp_c: results.temp_c,
         temp_f: results.temp_f,
@@ -281,8 +289,6 @@ function parseHourlyData(result) {
   console.log(hourlyData);
   return hourlyData;
 }
-
-
 
 
 
