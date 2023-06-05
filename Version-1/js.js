@@ -108,11 +108,11 @@ function assignWeatherValues(wData) {
 
 function parseHourlyData(result) {
 
-  let hoursData = [];
+  let hourlyData = [];
 
   for (let i = 0; i < 24; i++) {
     let results = result.forecast.forecastday[0].hour[i];
-    hoursData[i] = {
+    hourlyData[i] = {
       condition: results.condition.text,
       temp_c: results.temp_c,
       temp_f: results.temp_f,
@@ -125,7 +125,10 @@ function parseHourlyData(result) {
     }
   }
 
-  console.log(hoursData);
+  createHourlyDivs(hourlyData);
+
+  console.log(hourlyData);
+  return hourlyData;
 }
 
 function parseDailyData(result) {
@@ -173,7 +176,24 @@ function createDailyDivs(dailyData) {
   }
 }
 
+function createHourlyDivs(hourlyData) {
 
+  const getHourlyDiv = document.getElementById('hourly');
+
+  for (let i = 0; i < hourlyData.length; i++) {
+    
+    const createDiv = document.createElement('div');
+    createDiv.classList.add('hour', `hour-${i}`);
+
+    for (const [key, value] of Object.entries(hourlyData[i])) {
+      const childDiv = document.createElement('div');
+      childDiv.classList.add('hour-item', key);
+      childDiv.innerText = `${key}: ${value}`;
+      createDiv.appendChild(childDiv);
+    }
+    getHourlyDiv.appendChild(createDiv);
+  }
+}
 
 
 
