@@ -8,14 +8,32 @@
 
   <link rel="stylesheet" href="./style.css">
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 </head>
 <body>
   
 
 
-  <div id="searchDiv">
-    <input type="search" id="search">
-    <button id="search-btn">Click me!</button>
+  <div id="header">
+    <div id="title-div">
+      <div class="logo">Logo</div>
+      <div class="title-text">Weather App</div>
+    </div>
+    <div id="search-div">
+      <input type="search" id="search" placeholder="Search Location...">
+<!--       <span class="material-symbols-outlined">
+        search
+      </span> -->
+      <span>
+        <img src="./Icons/search_FILL0_wght400_GRAD0_opsz48.svg" alt="Search" />
+      </span>
+      <button id="search-btn">Click me!</button>
+    </div>
+    <div id="toggle-div">
+      <div>Toggle C/F</div>
+      <div>Toggle kph/mph</div>
+    </div>
   </div>
 
   <div id="current">
