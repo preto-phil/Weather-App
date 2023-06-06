@@ -207,13 +207,13 @@ function parseDailyData(result) {
     dailyData[i] = {
       date: results.date,
       condition: `<img src="${icon}" alt="${results.day.condition.text}" />`,
+      maxtemp_c: `${Math.round(results.day.maxtemp_c)} \u00B0C`,
       mintemp_c: `${Math.round(results.day.mintemp_c)} \u00B0C`,
-      maxtemp_c: `${Math.round(results.day.maxtemp_c)}\u00B0C`,
-      mintemp_f: results.day.mintemp_f,
-      maxtemp_f: results.day.maxtemp_f,
-      daily_chance_of_rain: results.day.daily_chance_of_rain,
-      maxwind_kph: results.day.maxwind_kph,
-      maxwind_mph: results.day.maxwind_mph,
+      maxtemp_f: `${Math.round(results.day.maxtemp_f)} \u2109`,
+      mintemp_f: `${Math.round(results.day.mintemp_f)} \u2109`,
+      daily_chance_of_rain: `${results.day.daily_chance_of_rain}%`,
+      maxwind_kph: `${Math.round(results.day.maxwind_kph)} kph`,
+      maxwind_mph: `${Math.round(results.day.maxwind_mph)} mph`,
     }
   }
   
@@ -300,18 +300,40 @@ function hourlySlider(index = 0) {
 
 }
 
-
-
 function toggleDegree() {
   const temp_c = document.querySelectorAll('.temp_c');
   const temp_f = document.querySelectorAll('.temp_f');
+  const maxtemp_c = document.querySelectorAll('.maxtemp_c');
+  const mintemp_c = document.querySelectorAll('.mintemp_c');
+  const maxtemp_f = document.querySelectorAll('.maxtemp_f');
+  const mintemp_f = document.querySelectorAll('.mintemp_f');
+
+  const elements = [temp_c, temp_f, maxtemp_c, mintemp_c, maxtemp_f, mintemp_f];
+
+  elements.forEach((list) => {
+    list.forEach((element) => {
+      element.classList.toggle('hidden');
+    });
+  });
+}
+
+
+/* function toggleDegree() {
+  const temp_c = document.querySelectorAll('.temp_c');
+  const temp_f = document.querySelectorAll('.temp_f');
+  const maxtemp_c = document.querySelectorAll('.maxtemp_c');
+  const mintemp_c = document.querySelectorAll('.mintemp_c');
+  const maxtemp_f = document.querySelectorAll('.maxtemp_f');
+  const mintemp_f = document.querySelectorAll('.mintemp_f');
 
   temp_c.forEach((element, index) => {
     element.classList.toggle('hidden');
     temp_f[index].classList.toggle('hidden');
   });
 
-}
+
+
+} */
 
 function toggleDegreeDiv() {
   const degree_c = document.getElementsByClassName('degree-c')[0];

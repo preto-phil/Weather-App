@@ -165,21 +165,24 @@ Header Section
 
 /* General */
 
-.temp_c {
+.temp_c,
+.maxtemp_c,
+.mintemp_c,
+.temp_f.hidden,
+.maxtemp_f.hidden,
+.mintemp_f.hidden {
   display: block;
 }
 
-.temp_f {
+.temp_f,
+.maxtemp_f,
+.mintemp_f,
+.temp_c.hidden,
+.maxtemp_c.hidden,
+.mintemp_c.hidden {
   display: none;
 }
 
-.temp_f.hidden {
-  display: block;
-}
-
-.temp_c.hidden {
-  display: none;
-}
 
 
 /* Hourly Section */
