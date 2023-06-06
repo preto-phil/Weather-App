@@ -114,17 +114,13 @@ Header Section
 
 .degree-c,
 .wind-k {
-  color: black;
-  font-weight: 600;
-  background-color: #bbb;
+  background-color: rgb(204, 203, 203);
   border-radius: 10px 0px 0px 10px;
 
   font-size: 1rem;
   padding: 0.5rem 1rem;
 
   cursor: pointer;
-
-  margin-right: 0px;
 }
 
 .degree-f,
@@ -138,6 +134,11 @@ Header Section
   cursor: pointer;
 }
 
+.active {
+  color: black;
+  font-weight: 600;
+  background-color: #bbb;
+}
 
 
 /* Current Section */

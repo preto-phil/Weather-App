@@ -126,6 +126,8 @@ function assignWeatherValues(wData) {
   let weatherData = wData;
 
   temperatureDiv.textContent = `Temperature: ${Math.round(weatherData.temp_c)} \u00B0C`;
+
+
   realFeelDiv.textContent = `Real feel: ${Math.round(weatherData.realFeel_c)} \u00B0C`;
   humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
   windDiv.textContent = `Wind speed: ${weatherData.wind_k}`;
@@ -303,16 +305,6 @@ function hourlySlider(index = 0) {
 function toggleDegree() {
   const temp_c = document.querySelectorAll('.temp_c');
   const temp_f = document.querySelectorAll('.temp_f');
-/* 
-  temp_c.forEach((element, index) => {
-    if (element.style.display === 'block') {
-      element.style.display = 'none';
-      temp_f[index].style.display = 'block';
-    } else {
-      element.style.display = 'block';
-      temp_f[index].style.display = 'none';
-    }
-  }); */
 
   temp_c.forEach((element, index) => {
     element.classList.toggle('hidden');
@@ -321,15 +313,20 @@ function toggleDegree() {
 
 }
 
+function toggleDegreeDiv() {
+  const degree_c = document.getElementsByClassName('degree-c')[0];
+  const degree_f = document.getElementsByClassName('degree-f')[0];
 
+  if (degree_c.classList.contains('active')) {
+    degree_c.classList.remove('active');
+    degree_f.classList.add('active');
+  } else {
+    degree_f.classList.remove('active');
+    degree_c.classList.add('active');}
+}
 
 const tempButton = document.querySelector('.degree');
-
-/* // Set initial display state of temp_f elements opposite to temp_c elements
-const temp_c = document.querySelectorAll('.temp_c');
-const temp_f = document.querySelectorAll('.temp_f');
-temp_f.forEach((element, index) => {
-  element.style.display = temp_c[index].style.display === 'block' ? 'none' : 'block';
+tempButton.addEventListener('click', () => {
+  toggleDegree();
+  toggleDegreeDiv();
 });
- */
-tempButton.addEventListener('click', toggleDegree);
