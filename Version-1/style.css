@@ -163,7 +163,7 @@ Header Section
 }
 
 
-/* General */
+/* Toggling Dump */
 
 .maxwind_kph, 
 .maxwind_mph.hidden,
@@ -217,7 +217,8 @@ Header Section
   justify-content: center;
   align-items: center;
 
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 #hourly {
@@ -245,10 +246,14 @@ Header Section
   background-color: rgb(77, 102, 102);
   row-gap: 1rem;
 
-  font-size: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
-
+/* img {
+  height: 100px;
+}
+ */
 /* Daily Section */
 
 #daily-parent {
