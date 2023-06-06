@@ -165,6 +165,10 @@ Header Section
 
 /* General */
 
+#temperature-c,
+#realfeel-c,
+#realfeel-f.hidden,
+#temperature-f.hidden,
 .temp_c,
 .maxtemp_c,
 .mintemp_c,
@@ -174,6 +178,10 @@ Header Section
   display: block;
 }
 
+#realfeel-c.hidden,
+#temperature-c.hidden,
+#realfeel-f,
+#temperature-f,
 .temp_f,
 .maxtemp_f,
 .mintemp_f,

@@ -117,18 +117,22 @@ function assignLocationValues(lData) {
 // Function that adds text to weather from API data
 function assignWeatherValues(wData) {
   // Get the reference to the HTML div elements
-  const temperatureDiv = document.getElementById('temperature');
-  const realFeelDiv = document.getElementById('realfeel');
+  const temperatureDivC = document.getElementById('temperature-c');
+  const temperatureDivF = document.getElementById('temperature-f');
+  const realFeelDivC = document.getElementById('realfeel-c');
+  const realFeelDivF = document.getElementById('realfeel-f');
   const humidityDiv = document.getElementById('humidity');
   const windDiv = document.getElementById('wind');
   const conditionDiv = document.getElementById('condition');
   const precipitationDiv = document.getElementById('precipitation');
   let weatherData = wData;
 
-  temperatureDiv.textContent = `Temperature: ${Math.round(weatherData.temp_c)} \u00B0C`;
+  temperatureDivC.textContent = `Temperature: ${Math.round(weatherData.temp_c)} \u00B0C`;
+  temperatureDivF.textContent = `Temperature: ${Math.round(weatherData.temp_f)} \u2109`;
 
+  realFeelDivC.textContent = `Real feel: ${Math.round(weatherData.realFeel_c)} \u00B0C`;
+  realFeelDivF.textContent = `Real feel: ${Math.round(weatherData.realFeel_f)} \u2109`;
 
-  realFeelDiv.textContent = `Real feel: ${Math.round(weatherData.realFeel_c)} \u00B0C`;
   humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
   windDiv.textContent = `Wind speed: ${weatherData.wind_k}`;
   conditionDiv.textContent = `Condition: ${weatherData.condition}`;
@@ -315,6 +319,16 @@ function toggleDegree() {
       element.classList.toggle('hidden');
     });
   });
+
+  const temperatureDivC = document.getElementById('temperature-c');
+  const temperatureDivF = document.getElementById('temperature-f');
+  const realFeelDivC = document.getElementById('realfeel-c');
+  const realFeelDivF = document.getElementById('realfeel-f');
+
+  temperatureDivC.classList.toggle('hidden');
+  temperatureDivF.classList.toggle('hidden');
+  realFeelDivC.classList.toggle('hidden');
+  realFeelDivF.classList.toggle('hidden');
 }
 
 
