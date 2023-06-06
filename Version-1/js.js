@@ -50,7 +50,7 @@ async function getWeather() {
 function parseCurrentData(result) {
   // Extract necessary weather data
   const weatherData = {
-  condition: result.current.condition.text,
+  condition: result.current.condition.icon,
   temp_c: result.current.temp_c,
   temp_f: result.current.temp_f,
   wind_k: result.current.wind_kph,
@@ -134,10 +134,17 @@ function assignWeatherValues(wData) {
   realFeelDivC.textContent = `Real feel: ${Math.round(weatherData.realFeel_c)} \u00B0C`;
   realFeelDivF.textContent = `Real feel: ${Math.round(weatherData.realFeel_f)} \u2109`;
 
-  humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
+  humidityDiv.textContent = `Humidity: ${weatherData.humidity}%`;
   windDivK.textContent = `Wind speed: ${Math.round(weatherData.wind_k)} kph`;
   windDivM.textContent = `Wind speed: ${Math.round(weatherData.wind_m)} mph`;
-  conditionDiv.textContent = `Condition: ${weatherData.condition}`;
+
+  let icon = weatherData.condition;
+  console.log(icon);
+  icon = `./Icons${icon.substring(20)}`;
+  console.log(icon);
+
+  conditionDiv.innerHTML = `<img src="${icon}" alt="${weatherData.condition.text}" />`;
+  
   precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}mm`;
 }
 
