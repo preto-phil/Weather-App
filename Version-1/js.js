@@ -157,7 +157,7 @@ function parseHourlyData(result) {
         hour: `${t}:00`,
         condition: `<img src="${icon}" alt="${results.condition.text}" />`,
         temp_c: `${Math.round(results.temp_c)} \u00B0C`,
-      /* temp_f: results.temp_f, */
+        temp_f: `${Math.round(results.temp_f)} \u2109`,
       }
       t++;
     } else if (tr < timeRemaining) {
@@ -178,13 +178,7 @@ function parseHourlyData(result) {
         hour: `${hour}:00`,
         condition: `<img src="${icon}" alt="${results.condition.text}" />`,
         temp_c: `${Math.round(results.temp_c)} \u00B0C`,
-/*         temp_f: results.temp_f,
-        wind_k: results.wind_kph,
-        wind_m: results.wind_mph,
-        humidity: results.humidity,
-        realFeel_c: results.feelslike_c,
-        realFeel_f: results.feelslike_f,
-        precip_mm: results.precip_mm, */
+        temp_f: `${Math.round(results.temp_f)} \u2109`,
       }
       tr++;
     }
@@ -306,4 +300,36 @@ function hourlySlider(index = 0) {
 
 
 
-// Get day of week and get month and get
+function toggleDegree() {
+  const temp_c = document.querySelectorAll('.temp_c');
+  const temp_f = document.querySelectorAll('.temp_f');
+/* 
+  temp_c.forEach((element, index) => {
+    if (element.style.display === 'block') {
+      element.style.display = 'none';
+      temp_f[index].style.display = 'block';
+    } else {
+      element.style.display = 'block';
+      temp_f[index].style.display = 'none';
+    }
+  }); */
+
+  temp_c.forEach((element, index) => {
+    element.classList.toggle('hidden');
+    temp_f[index].classList.toggle('hidden');
+  });
+
+}
+
+
+
+const tempButton = document.querySelector('.degree');
+
+/* // Set initial display state of temp_f elements opposite to temp_c elements
+const temp_c = document.querySelectorAll('.temp_c');
+const temp_f = document.querySelectorAll('.temp_f');
+temp_f.forEach((element, index) => {
+  element.style.display = temp_c[index].style.display === 'block' ? 'none' : 'block';
+});
+ */
+tempButton.addEventListener('click', toggleDegree);

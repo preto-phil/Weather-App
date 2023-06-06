@@ -153,12 +153,32 @@ Header Section
 
 #location {
   font-size: 2rem;
-  
+  font-weight: 600;
+}
+
+#timezone {
+  font-size: 1.5rem;
+  color: #bbb;
 }
 
 
+/* General */
 
+.temp_c {
+  display: block;
+}
 
+.temp_f {
+  display: none;
+}
+
+.temp_f.hidden {
+  display: block;
+}
+
+.temp_c.hidden {
+  display: none;
+}
 
 
 /* Hourly Section */
@@ -233,7 +253,9 @@ Header Section
   align-items: center;
   column-gap: 2rem;
   
-height: 100%;
+  width: 80%;
+  height: 100%;
+
 
 
 }
