@@ -201,7 +201,7 @@ function parseDailyData(result) {
 function createDailyDivs(dailyData) {
 
   const getDailyDiv = document.getElementById('daily');
-  getDailyDiv.innerHTML = ';'
+  getDailyDiv.innerHTML = '';
 
   for (let i = 0; i < dailyData.length; i++) {
     
