@@ -125,7 +125,7 @@ function parseHourlyData(result) {
     
     if (t < 24) {
       // day 0
-      let results = result.forecast.forecastday[0].hour[i];
+      let results = result.forecast.forecastday[0].hour[t];
       let icon = results.condition.icon;
       icon = `./Icons${icon.substring(20)}`
 
