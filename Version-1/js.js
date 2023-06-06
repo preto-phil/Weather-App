@@ -122,7 +122,8 @@ function assignWeatherValues(wData) {
   const realFeelDivC = document.getElementById('realfeel-c');
   const realFeelDivF = document.getElementById('realfeel-f');
   const humidityDiv = document.getElementById('humidity');
-  const windDiv = document.getElementById('wind');
+  const windDivK = document.getElementById('wind-k');
+  const windDivM = document.getElementById('wind-m');
   const conditionDiv = document.getElementById('condition');
   const precipitationDiv = document.getElementById('precipitation');
   let weatherData = wData;
@@ -134,7 +135,8 @@ function assignWeatherValues(wData) {
   realFeelDivF.textContent = `Real feel: ${Math.round(weatherData.realFeel_f)} \u2109`;
 
   humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
-  windDiv.textContent = `Wind speed: ${weatherData.wind_k}`;
+  windDivK.textContent = `Wind speed: ${Math.round(weatherData.wind_k)} kph`;
+  windDivM.textContent = `Wind speed: ${Math.round(weatherData.wind_m)} mph`;
   conditionDiv.textContent = `Condition: ${weatherData.condition}`;
   precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}mm`;
 }
@@ -332,23 +334,6 @@ function toggleDegree() {
 }
 
 
-/* function toggleDegree() {
-  const temp_c = document.querySelectorAll('.temp_c');
-  const temp_f = document.querySelectorAll('.temp_f');
-  const maxtemp_c = document.querySelectorAll('.maxtemp_c');
-  const mintemp_c = document.querySelectorAll('.mintemp_c');
-  const maxtemp_f = document.querySelectorAll('.maxtemp_f');
-  const mintemp_f = document.querySelectorAll('.mintemp_f');
-
-  temp_c.forEach((element, index) => {
-    element.classList.toggle('hidden');
-    temp_f[index].classList.toggle('hidden');
-  });
-
-
-
-} */
-
 function toggleDegreeDiv() {
   const degree_c = document.getElementsByClassName('degree-c')[0];
   const degree_f = document.getElementsByClassName('degree-f')[0];
@@ -365,4 +350,50 @@ const tempButton = document.querySelector('.degree');
 tempButton.addEventListener('click', () => {
   toggleDegree();
   toggleDegreeDiv();
+});
+
+
+
+
+
+
+
+function toggleWind() {
+
+  const maxwind_kph = document.querySelectorAll('.maxwind_kph');
+  const maxwind_mph = document.querySelectorAll('.maxwind_mph');
+
+  const elements = [maxwind_kph, maxwind_mph];
+
+  elements.forEach((list) => {
+    list.forEach((element) => {
+      element.classList.toggle('hidden');
+    });
+  });
+
+
+  const windDivK = document.getElementById('wind-k');
+  const windDivM = document.getElementById('wind-m');
+
+  windDivK.classList.toggle('hidden');
+  windDivM.classList.toggle('hidden');
+}
+
+
+function toggleWindDiv() {
+  const wind_k = document.getElementsByClassName('wind-k')[0];
+  const wind_m = document.getElementsByClassName('wind-m')[0];
+
+  if (wind_k.classList.contains('active')) {
+    wind_k.classList.remove('active');
+    wind_m.classList.add('active');
+  } else {
+    wind_m.classList.remove('active');
+    wind_k.classList.add('active');}
+}
+
+const windButton = document.querySelector('.wind');
+windButton.addEventListener('click', () => {
+  toggleWind();
+  toggleWindDiv();
 });
