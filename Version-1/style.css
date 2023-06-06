@@ -94,17 +94,6 @@ Header Section
   cursor: pointer;
 }
 
-img {
-  color: white;
-}
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
 
 
 #toggle-div {
@@ -115,8 +104,39 @@ img {
   align-items: center;
 }
 
+.degree,
+.wind {
+  margin-right: 2rem;
 
+  display: flex;
+  flex-direction: row;
+}
 
+.degree-c,
+.wind-k {
+  color: black;
+  font-weight: 600;
+  background-color: #bbb;
+  border-radius: 10px 0px 0px 10px;
+
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+
+  cursor: pointer;
+
+  margin-right: 0px;
+}
+
+.degree-f,
+.wind-m {
+  background-color: rgb(204, 203, 203);
+  border-radius: 0px 10px 10px 0px;
+
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+ 
+  cursor: pointer;
+}
 
 
 #current {
