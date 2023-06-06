@@ -126,10 +126,13 @@ function parseHourlyData(result) {
     if (t < 24) {
       // day 0
       let results = result.forecast.forecastday[0].hour[i];
+      let icon = results.condition.icon;
+      icon = `./Icons${icon.substring(20)}`
+
       hourlyData[i] = {
         hour: `${t}:00`,
-        condition: results.condition.text,
-        temp_c: results.temp_c,
+        condition: `<img src="${icon}" alt="${results.condition.text}" />`,
+        temp_c: `${results.temp_c} \u00B0C`,
 /*         temp_f: results.temp_f,
         wind_k: results.wind_kph,
         wind_m: results.wind_mph,
@@ -143,6 +146,9 @@ function parseHourlyData(result) {
       // day 1
       let results = result.forecast.forecastday[1].hour[tr];
 
+      let icon = results.condition.icon;
+      icon = `./Icons${icon.substring(20)}`
+
       let hour;
       if (tr < 10) {
         hour = `0${tr}`;
@@ -152,8 +158,8 @@ function parseHourlyData(result) {
 
       hourlyData[i] = {
         hour: `${hour}:00`,
-        condition: results.condition.text,
-        temp_c: results.temp_c,
+        condition: `<img src="${icon}" alt="${results.condition.text}" />`,
+        temp_c: `${results.temp_c} \u00B0C`,
 /*         temp_f: results.temp_f,
         wind_k: results.wind_kph,
         wind_m: results.wind_mph,
@@ -178,11 +184,17 @@ function parseDailyData(result) {
 
   for (let i = 0; i < 8; i++) {
     let results = result.forecast.forecastday[i];
+
+    let icon = results.day.condition.icon;
+    icon = `./Icons${icon.substring(20)}`
+
+
+
     dailyData[i] = {
       date: results.date,
-      condition: results.day.condition.text,
-      mintemp_c: results.day.mintemp_c,
-      maxtemp_c: results.day.maxtemp_c,
+      condition: `<img src="${icon}" alt="${results.day.condition.text}" />`,
+      mintemp_c: `${results.day.mintemp_c} \u00B0C`,
+      maxtemp_c: `${results.day.maxtemp_c}\u00B0C`,
       mintemp_f: results.day.mintemp_f,
       maxtemp_f: results.day.maxtemp_f,
       daily_chance_of_rain: results.day.daily_chance_of_rain,
@@ -211,7 +223,7 @@ function createDailyDivs(dailyData) {
     for (const [key, value] of Object.entries(dailyData[i])) {
       const childDiv = document.createElement('div');
       childDiv.classList.add('day-item', key);
-      childDiv.innerText = `${key}: ${value}`;
+      childDiv.innerHTML = `${value}`;
       createDiv.appendChild(childDiv);
     }
     getDailyDiv.appendChild(createDiv);
@@ -231,7 +243,7 @@ function createHourlyDivs(hourlyData) {
     for (const [key, value] of Object.entries(hourlyData[i])) {
       const childDiv = document.createElement('div');
       childDiv.classList.add('hour-item', key);
-      childDiv.innerText = `${value}`;
+      childDiv.innerHTML = `${value}`;
       createDiv.appendChild(childDiv);
     }
     getHourlyDiv.appendChild(createDiv);
@@ -273,3 +285,6 @@ function hourlySlider(index = 0) {
   dots[sliderIndex - 1].className += " active";
 
 }
+
+
+
