@@ -139,24 +139,29 @@ Header Section
 }
 
 
+
+/* Current Section */
+
 #current {
   grid-area: 2 / 1 / 3 / 4;
 
   background-color: rgb(68, 65, 112);
 }
 
-#left-slider {
-  grid-area: 3 / 1 / 4 / 2;
-}
 
+
+
+
+
+
+
+/* Hourly Section */
 
 #hourly-parent {
   grid-area: 3 / 2 / 4 / 3;
 
   display: grid;
   grid-template-rows: 9fr 1fr;
-
-  
 }
 
 #hourly {
@@ -168,7 +173,44 @@ Header Section
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
+
+  column-gap: 2rem;
+}
+
+.hours {
+  width: 12%;
+  height: 80%;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column;
+  background-color: rgb(77, 102, 102);
+  row-gap: 1rem;
+
+  font-size: 1rem;
+}
+
+
+/* Daily Section */
+
+#daily {
+  grid-area: 4 / 1 / 5 / 4;
+
+  background-color: rgb(68, 65, 112);
+
+}
+
+
+/* Slider and Dot Section */
+
+#left-slider {
+  grid-area: 3 / 1 / 4 / 2;
+}
+
+#right-slider {
+  grid-area: 3 / 3 / 4 / 4;
 }
 
 .dot-nav {
@@ -179,22 +221,11 @@ Header Section
   align-items: center;
 }
 
-#right-slider {
-  grid-area: 3 / 3 / 4 / 4;
-}
-
-#daily {
-  grid-area: 4 / 1 / 5 / 4;
-
-  background-color: rgb(68, 65, 112);
-
-}
-
-.images-slideshow {
+/* .images-slideshow {
   max-width: 1200px;
   position: relative;
   margin: auto;
-}
+} */
 
 .slider-btn {
   display: flex;
@@ -220,7 +251,6 @@ Header Section
   color: rgb(255, 253, 253);
   background-color: rgba(61, 59, 59, 0.8);
 }
-
 
 .dot {
   height: 15px;

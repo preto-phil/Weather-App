@@ -125,24 +125,22 @@ function parseHourlyData(result) {
     
     if (t < 24) {
       // day 0
-      // inhoud van for loop vir dag forecastday[0]
       let results = result.forecast.forecastday[0].hour[i];
       hourlyData[i] = {
         hour: `${t}:00`,
         condition: results.condition.text,
         temp_c: results.temp_c,
-        temp_f: results.temp_f,
+/*         temp_f: results.temp_f,
         wind_k: results.wind_kph,
         wind_m: results.wind_mph,
         humidity: results.humidity,
         realFeel_c: results.feelslike_c,
         realFeel_f: results.feelslike_f,
-        precip_mm: results.precip_mm,
+        precip_mm: results.precip_mm, */
       }
       t++;
     } else if (tr < timeRemaining) {
       // day 1
-      // inhoud van for loop vir dag forecastday[1]
       let results = result.forecast.forecastday[1].hour[tr];
 
       let hour;
@@ -156,13 +154,13 @@ function parseHourlyData(result) {
         hour: `${hour}:00`,
         condition: results.condition.text,
         temp_c: results.temp_c,
-        temp_f: results.temp_f,
+/*         temp_f: results.temp_f,
         wind_k: results.wind_kph,
         wind_m: results.wind_mph,
         humidity: results.humidity,
         realFeel_c: results.feelslike_c,
         realFeel_f: results.feelslike_f,
-        precip_mm: results.precip_mm,
+        precip_mm: results.precip_mm, */
       }
       tr++;
     }
@@ -233,7 +231,7 @@ function createHourlyDivs(hourlyData) {
     for (const [key, value] of Object.entries(hourlyData[i])) {
       const childDiv = document.createElement('div');
       childDiv.classList.add('hour-item', key);
-      childDiv.innerText = `${key}: ${value}`;
+      childDiv.innerText = `${value}`;
       createDiv.appendChild(childDiv);
     }
     getHourlyDiv.appendChild(createDiv);
