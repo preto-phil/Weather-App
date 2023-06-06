@@ -132,14 +132,8 @@ function parseHourlyData(result) {
       hourlyData[i] = {
         hour: `${t}:00`,
         condition: `<img src="${icon}" alt="${results.condition.text}" />`,
-        temp_c: `${results.temp_c} \u00B0C`,
-/*         temp_f: results.temp_f,
-        wind_k: results.wind_kph,
-        wind_m: results.wind_mph,
-        humidity: results.humidity,
-        realFeel_c: results.feelslike_c,
-        realFeel_f: results.feelslike_f,
-        precip_mm: results.precip_mm, */
+        temp_c: `${Math.round(results.temp_c)} \u00B0C`,
+      /* temp_f: results.temp_f, */
       }
       t++;
     } else if (tr < timeRemaining) {
@@ -159,7 +153,7 @@ function parseHourlyData(result) {
       hourlyData[i] = {
         hour: `${hour}:00`,
         condition: `<img src="${icon}" alt="${results.condition.text}" />`,
-        temp_c: `${results.temp_c} \u00B0C`,
+        temp_c: `${Math.round(results.temp_c)} \u00B0C`,
 /*         temp_f: results.temp_f,
         wind_k: results.wind_kph,
         wind_m: results.wind_mph,
@@ -193,8 +187,8 @@ function parseDailyData(result) {
     dailyData[i] = {
       date: results.date,
       condition: `<img src="${icon}" alt="${results.day.condition.text}" />`,
-      mintemp_c: `${results.day.mintemp_c} \u00B0C`,
-      maxtemp_c: `${results.day.maxtemp_c}\u00B0C`,
+      mintemp_c: `${Math.round(results.day.mintemp_c)} \u00B0C`,
+      maxtemp_c: `${Math.round(results.day.maxtemp_c)}\u00B0C`,
       mintemp_f: results.day.mintemp_f,
       maxtemp_f: results.day.maxtemp_f,
       daily_chance_of_rain: results.day.daily_chance_of_rain,
