@@ -66,6 +66,7 @@ function parseCurrentData(result) {
     region: result.location.region,
     country: result.location.country,
     localTime: result.location.localtime,
+    timezone: result.location.tz_id,
   }
 
   // Call function
@@ -85,9 +86,32 @@ function parseCurrentData(result) {
 function assignLocationValues(lData) {
   // Get the reference to the HTML div elements
   const locationDiv = document.getElementById('location');
+  const timezoneDiv = document.getElementById('timezone');
   let locationData = lData;
+  let timezone = `${locationData.timezone}`;
+
+
+  // Create a new Date object with the current date and time in the specified time zone
+  const currentDate = new Date().toLocaleDateString(undefined, { timezone });
+
+  // Get the day of the week from the current date
+  const dayOfWeek = new Date(currentDate).toLocaleDateString(undefined, { weekday: 'long' });
+
+  const month = new Date(currentDate).toLocaleDateString(undefined, { month: 'long' });
+
+  console.log(currentDate);
+  console.log(dayOfWeek); // Output: The current day of the week (e.g., 'Monday')
+
+  let numDay = currentDate.slice(0, 2);
+  console.log(numDay)
+  let numYear = currentDate.slice(6);
+  console.log(numYear);
+
+  let time = locationData.localTime;
+  time = time.slice(-5);
 
   locationDiv.textContent = `${locationData.city}, ${locationData.region}, ${locationData.country}`;
+  timezoneDiv.textContent = `${dayOfWeek} ${numDay} ${month} ${numYear} | ${time}`;
 }
 
 // Function that adds text to weather from API data
@@ -101,8 +125,8 @@ function assignWeatherValues(wData) {
   const precipitationDiv = document.getElementById('precipitation');
   let weatherData = wData;
 
-  temperatureDiv.textContent = `Temperature: ${weatherData.temp_c}`;
-  realFeelDiv.textContent = `Real feel: ${weatherData.realFeel_c}`;
+  temperatureDiv.textContent = `Temperature: ${Math.round(weatherData.temp_c)} \u00B0C`;
+  realFeelDiv.textContent = `Real feel: ${Math.round(weatherData.realFeel_c)} \u00B0C`;
   humidityDiv.textContent = `Humidity: ${weatherData.humidity}`;
   windDiv.textContent = `Wind speed: ${weatherData.wind_k}`;
   conditionDiv.textContent = `Condition: ${weatherData.condition}`;
@@ -282,3 +306,4 @@ function hourlySlider(index = 0) {
 
 
 
+// Get day of week and get month and get
