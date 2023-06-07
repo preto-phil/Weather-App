@@ -50,6 +50,9 @@ header {
   grid-area: 1 / 1 / 2 / 2;
 
   height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
 }
 
 #header {
@@ -325,6 +328,8 @@ main {
   grid-template-rows: 2fr 9fr 1fr;
 
   height: 100%;
+
+/*   background-color: rgb(82, 82, 91, 0.3); */
 
 }
 
