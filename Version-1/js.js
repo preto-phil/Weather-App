@@ -59,6 +59,7 @@ function parseCurrentData(result) {
   realFeel_c: result.current.feelslike_c,
   realFeel_f: result.current.feelslike_f,
   precip_mm: result.current.precip_mm,
+  cloud: result.current.cloud,
   }
   // Extract necessary location data
   const locationData = {
@@ -126,6 +127,7 @@ function assignWeatherValues(wData) {
   const windDivM = document.getElementById('wind-m');
   const conditionDiv = document.getElementById('condition');
   const precipitationDiv = document.getElementById('precipitation');
+  const cloudDiv = document.getElementById('cloud');
   let weatherData = wData;
 
   temperatureDivC.textContent = `Temperature: ${Math.round(weatherData.temp_c)} \u00B0C`;
@@ -135,6 +137,7 @@ function assignWeatherValues(wData) {
   realFeelDivF.textContent = `Real feel: ${Math.round(weatherData.realFeel_f)} \u2109`;
 
   humidityDiv.textContent = `Humidity: ${weatherData.humidity}%`;
+  cloudDiv.textContent = `Cloud Coverage: ${weatherData.cloud}%`;
   windDivK.textContent = `Wind speed: ${Math.round(weatherData.wind_k)} kph`;
   windDivM.textContent = `Wind speed: ${Math.round(weatherData.wind_m)} mph`;
 
