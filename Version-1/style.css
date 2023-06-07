@@ -146,6 +146,8 @@ Header Section
 #current-parent {
   grid-area: 2 / 1 / 3 / 4;
 
+  background-color: rgb(68, 65, 112);
+
   width: 100%;
   height: 100%;
   display: flex;
@@ -153,8 +155,6 @@ Header Section
 }
 
 #current {
-  background-color: rgb(68, 65, 112);
-
   display: grid;
   grid-template-rows: 2fr 1fr 4fr;
   grid-template-columns: repeat(7, 1fr);
@@ -166,6 +166,14 @@ Header Section
 #temperature-f.hidden,
 #realfeel-f.hidden,
 #wind-m.hidden {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#location,
+#timezone {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -187,18 +195,15 @@ Header Section
 
 
 
-#temperature-c,
-#temperature-f.hidden {
+#temperature {
   grid-area: 3 / 1 / 4 / 2;
 }
 
-#realfeel-c,
-#realfeel-f.hidden {
+#realfeel {
   grid-area: 3 / 2 / 4 / 3;
 }
 
-#wind-k,
-#wind-m.hidden {
+#wind {
   grid-area: 3 / 3 / 4 / 4;
 }
 
@@ -220,6 +225,21 @@ Header Section
 #humidity {
   grid-area: 3 / 7 / 4 / 8;
 
+}
+.current-styling {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+
+.current-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  display: flex;
+  align-items: start;
+
+  padding-bottom: 2rem;
 }
 
 

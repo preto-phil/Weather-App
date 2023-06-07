@@ -122,24 +122,23 @@ function assignWeatherValues(wData) {
   const temperatureDivF = document.getElementById('temperature-f');
   const realFeelDivC = document.getElementById('realfeel-c');
   const realFeelDivF = document.getElementById('realfeel-f');
-  const humidityDiv = document.getElementById('humidity');
+  const humidityDiv = document.getElementById('humidity-num');
   const windDivK = document.getElementById('wind-k');
   const windDivM = document.getElementById('wind-m');
   const conditionDiv = document.getElementById('condition');
-  const precipitationDiv = document.getElementById('precipitation');
-  const cloudDiv = document.getElementById('cloud');
+  const precipitationDiv = document.getElementById('precip-num');
+  const cloudDiv = document.getElementById('cloud-num');
   let weatherData = wData;
 
-  temperatureDivC.textContent = `Temperature: ${Math.round(weatherData.temp_c)} \u00B0C`;
-  temperatureDivF.textContent = `Temperature: ${Math.round(weatherData.temp_f)} \u2109`;
-
-  realFeelDivC.textContent = `Real feel: ${Math.round(weatherData.realFeel_c)} \u00B0C`;
-  realFeelDivF.textContent = `Real feel: ${Math.round(weatherData.realFeel_f)} \u2109`;
-
-  humidityDiv.textContent = `Humidity: ${weatherData.humidity}%`;
-  cloudDiv.textContent = `Cloud Coverage: ${weatherData.cloud}%`;
-  windDivK.textContent = `Wind speed: ${Math.round(weatherData.wind_k)} kph`;
-  windDivM.textContent = `Wind speed: ${Math.round(weatherData.wind_m)} mph`;
+  temperatureDivC.textContent = `${Math.round(weatherData.temp_c)} \u00B0C`;
+  temperatureDivF.textContent = `${Math.round(weatherData.temp_f)} \u2109`;
+  realFeelDivC.textContent = `${Math.round(weatherData.realFeel_c)} \u00B0C`;
+  realFeelDivF.textContent = `${Math.round(weatherData.realFeel_f)} \u2109`;
+  humidityDiv.textContent = `${weatherData.humidity}%`;
+  cloudDiv.textContent = `${weatherData.cloud}%`;
+  windDivK.textContent = `${Math.round(weatherData.wind_k)} kph`;
+  windDivM.textContent = `${Math.round(weatherData.wind_m)} mph`;
+  precipitationDiv.textContent = `${weatherData.precip_mm}mm`;
 
   let icon = weatherData.condition;
   console.log(icon);
@@ -148,7 +147,6 @@ function assignWeatherValues(wData) {
 
   conditionDiv.innerHTML = `<img src="${icon}" alt="${weatherData.condition.text}" />`;
   
-  precipitationDiv.textContent = `Precipitation: ${weatherData.precip_mm}mm`;
 }
 
 function parseHourlyData(result) {
