@@ -133,7 +133,7 @@ function assignWeatherValues(wData) {
   icon = `./Icons${icon.substring(20)}`;
   console.log(icon);
 
-  conditionDiv.innerHTML = `<img src="${icon}" alt="${weatherData.condition.text}" />`;
+  conditionDiv.innerHTML = `<img src="${icon}" class="image" alt="${weatherData.condition.text}" />`;
   
 }
 
@@ -158,7 +158,7 @@ function parseHourlyData(result) {
 
       hourlyData[i] = {
         hour: `${t}:00`,
-        condition: `<img src="${icon}" alt="${results.condition.text}" />`,
+        condition: `<img src="${icon}" class="image" alt="${results.condition.text}" />`,
         temp_c: `${Math.round(results.temp_c)} \u00B0C`,
         temp_f: `${Math.round(results.temp_f)} \u2109`,
       }
@@ -179,7 +179,7 @@ function parseHourlyData(result) {
 
       hourlyData[i] = {
         hour: `${hour}:00`,
-        condition: `<img src="${icon}" alt="${results.condition.text}" />`,
+        condition: `<img src="${icon}" class="image" alt="${results.condition.text}" />`,
         temp_c: `${Math.round(results.temp_c)} \u00B0C`,
         temp_f: `${Math.round(results.temp_f)} \u2109`,
       }
@@ -207,14 +207,14 @@ function parseDailyData(result) {
 
     dailyData[i] = {
       date: results.date,
-      condition: `<img src="${icon}" alt="${results.day.condition.text}" />`,
-      maxtemp_c: `${Math.round(results.day.maxtemp_c)} \u00B0C`,
-      mintemp_c: `${Math.round(results.day.mintemp_c)} \u00B0C`,
-      maxtemp_f: `${Math.round(results.day.maxtemp_f)} \u2109`,
-      mintemp_f: `${Math.round(results.day.mintemp_f)} \u2109`,
-      daily_chance_of_rain: `${results.day.daily_chance_of_rain}%`,
-      maxwind_kph: `${Math.round(results.day.maxwind_kph)} kph`,
-      maxwind_mph: `${Math.round(results.day.maxwind_mph)} mph`,
+      condition: `<img src="${icon}" class="image" alt="${results.day.condition.text}" />`,
+      maxtemp_c: `Max:   ${Math.round(results.day.maxtemp_c)} \u00B0C`,
+      mintemp_c: `Max:   ${Math.round(results.day.mintemp_c)} \u00B0C`,
+      maxtemp_f: `Min:   ${Math.round(results.day.maxtemp_f)} \u2109`,
+      mintemp_f: `Min:   ${Math.round(results.day.mintemp_f)} \u2109`,
+      daily_chance_of_rain: `Rain:      ${results.day.daily_chance_of_rain}% `,
+      maxwind_kph: `Wind:  ${Math.round(results.day.maxwind_kph)} kph`,
+      maxwind_mph: `Wind:  ${Math.round(results.day.maxwind_mph)} mph`,
     }
   }
   
