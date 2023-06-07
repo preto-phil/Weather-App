@@ -91,23 +91,11 @@ function assignLocationValues(lData) {
   let locationData = lData;
   let timezone = `${locationData.timezone}`;
 
-
-  // Create a new Date object with the current date and time in the specified time zone
   const currentDate = new Date().toLocaleDateString(undefined, { timezone });
-
-  // Get the day of the week from the current date
   const dayOfWeek = new Date(currentDate).toLocaleDateString(undefined, { weekday: 'long' });
-
   const month = new Date(currentDate).toLocaleDateString(undefined, { month: 'long' });
-
-  console.log(currentDate);
-  console.log(dayOfWeek); // Output: The current day of the week (e.g., 'Monday')
-
   let numDay = currentDate.slice(0, 2);
-  console.log(numDay)
   let numYear = currentDate.slice(6);
-  console.log(numYear);
-
   let time = locationData.localTime;
   time = time.slice(-5);
 
@@ -155,10 +143,9 @@ function parseHourlyData(result) {
   let currentDateTime = result.current.last_updated;
   // trim everything before and after hour
   let time = currentDateTime.slice(11, 13);
-/*   time = Math.floor(time); */
-  console.log(time);
-  let timeRemaining = 24 - (24- time);
+  let timeRemaining = 24 - (24 - time);
   let t = time;
+  if (time < 10) { t = Number(time.slice(-1)) };
   let tr = 0;
 
   for (let i = 0; i < 24; i++) {
