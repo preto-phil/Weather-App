@@ -5,7 +5,8 @@
 
 html {
   --dark-grey: #52525b;
-  --light-grey: #bbb;
+  --middle-grey: #bbb;
+  --light-grey: rgb(204, 203, 203);
 }
 
 body {
@@ -73,17 +74,25 @@ header {
   margin: 1rem;
   width: 15%;
   height: 60%;
-  background-color: #bbb;
+
+  padding-left: 2rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.title-text {
-  font-size: 2.5rem;
+.logo img {
+  filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(246deg) brightness(102%) contrast(143%);
+}
 
-    color: var(--dark-grey);
+.title-text {
+  padding-left: 2rem;
+
+  font-size: 2.5rem;
+  font-weight: 700;
+
+  color: var(--middle-grey);
 }
 
 #search-div {
