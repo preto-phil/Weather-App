@@ -4,8 +4,8 @@
 }
 
 body {
-  background-color: rgb(61, 59, 59);
-  color: whitesmoke;
+/*   background-color: rgb(61, 59, 59);
+ */  color: whitesmoke;
   font-family: monospace;
 
   min-height: 100vh;
@@ -19,6 +19,7 @@ body {
   grid-template-columns: 1fr 10fr 1fr;
   gap: 10px;
   
+  background: url(./Images/light_sky_stars_background_85555_1920x1080.jpg);
 }
 
 #current,
@@ -38,6 +39,8 @@ Header Section
 
 #header {
   grid-area: 1 / 1 / 2 / 4;
+/* 
+  background-color: rgb(61, 59, 59); */
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -146,7 +149,9 @@ Header Section
 #current-parent {
   grid-area: 2 / 1 / 3 / 4;
 
-  background-color: rgb(68, 65, 112);
+/*   background-color: rgb(68, 65, 112); */
+
+/* background-color: rgb(61, 59, 59); */
 
   width: 100%;
   height: 100%;
@@ -299,7 +304,7 @@ Header Section
   grid-area: 2 / 1 / 3 / 2;
 
   
-  background-color: rgb(65, 95, 112);
+/*   background-color: rgb(65, 95, 112); */
 
   display: flex;
   justify-content: center;
@@ -333,7 +338,7 @@ Header Section
 #daily-parent {
   grid-area: 4 / 1 / 5 / 4;
 
-  background-color: rgb(68, 65, 112);
+/*   background-color: rgb(68, 65, 112); */
 
   display: flex;
   flex-direction: column;
