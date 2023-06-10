@@ -197,20 +197,24 @@ function parseDailyData(result) {
 
   let dailyData = [];
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 1; i < 8; i++) {
     let results = result.forecast.forecastday[i];
 
     let icon = results.day.condition.icon;
     icon = `./Icons${icon.substring(20)}`
 
+    let j = i - 1;
 
+    let formatDate = new Date(results.date);
+    let day = formatDate.getDate();
+    let month = formatDate.toLocaleString('default', { month: 'long' });
 
-    dailyData[i] = {
-      date: results.date,
+    dailyData[j] = {
+      date: `${day} ${month}`,
       condition: `<img src="${icon}" class="image" alt="${results.day.condition.text}" />`,
       maxtemp_c: `Max:   ${Math.round(results.day.maxtemp_c)} \u00B0C`,
-      mintemp_c: `Max:   ${Math.round(results.day.mintemp_c)} \u00B0C`,
-      maxtemp_f: `Min:   ${Math.round(results.day.maxtemp_f)} \u2109`,
+      mintemp_c: `Min:   ${Math.round(results.day.mintemp_c)} \u00B0C`,
+      maxtemp_f: `Max:   ${Math.round(results.day.maxtemp_f)} \u2109`,
       mintemp_f: `Min:   ${Math.round(results.day.mintemp_f)} \u2109`,
       daily_chance_of_rain: `Rain:      ${results.day.daily_chance_of_rain}% `,
       maxwind_kph: `Wind:  ${Math.round(results.day.maxwind_kph)} kph`,
