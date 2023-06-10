@@ -22,6 +22,8 @@ body {
 
   display: grid;
   grid-template-rows: 0.15fr 1fr 0.05fr;
+
+
   
   background: url(./Images/light_sky_stars_background_85555_1920x1080.jpg);
   background-size: cover;
@@ -180,7 +182,7 @@ main {
   grid-template-columns: 1fr 9fr 1fr;
   grid-template-rows: repeat(3, 1fr);
 
-  row-gap: 2rem;
+  row-gap: 4rem;
 }
 
 #current-parent {
@@ -476,6 +478,8 @@ main {
 
   font-size: 2rem;
   font-weight: 600;
+
+  padding-bottom: 1rem;
 }
 
 #daily {
@@ -505,6 +509,14 @@ main {
   height: 80%;
 }
 
+.date {
+  font-size: 1.2rem;
+}
+
+.day-item {
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+}
 
 
 /* Footer Section */
@@ -512,6 +524,7 @@ main {
 footer {
   grid-area: 3 / 1 / 4 / 2;
 
+  margin-top: 2rem;
 }
 
 #footer {
