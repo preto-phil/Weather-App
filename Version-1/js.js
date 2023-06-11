@@ -9,23 +9,39 @@ window.onload = () => {
   getWeather();
 }
 
+// Get the input field
+const input = document.querySelector('#search');
+
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("search-btn").click();
+  }
+});
+
 // Get search button element
 const searchBtn = document.querySelector('#search-btn');
 
 // Add event listener to search button
-searchBtn.addEventListener('click', () => {
-  // check if search input is empty
-  if (document.querySelector('#search').value === '') {
-    // Use default search input value
-    getWeather();
-  } else {
-    // Use the entered search input value, whilst trimming whitespace
-    const rawSearchValue = document.querySelector('#search').value;
-    searchInputValue = encodeURIComponent(rawSearchValue.trim());
-    getWeather();
-  }
-});
+searchBtn.addEventListener('click', getInput);
 
+
+function getInput() {
+    // check if search input is empty
+    if (document.querySelector('#search').value === '') {
+      // Use default search input value
+      getWeather();
+    } else {
+      // Use the entered search input value, whilst trimming whitespace
+      const rawSearchValue = document.querySelector('#search').value;
+      searchInputValue = encodeURIComponent(rawSearchValue.trim());
+      getWeather();
+    }
+}
 
 // Function that fetches weather data
 async function getWeather() {
