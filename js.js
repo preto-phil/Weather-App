@@ -47,7 +47,7 @@ function getInput() {
 async function getWeather() {
   try {
     // Fetch weather data from API
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=e0d3c7ebf93b4fb48c1121421233105&days=8&q=${searchInputValue}`, { mode: 'cors' });
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=e0d3c7ebf93b4fb48c1121421233105&days=8&q=${searchInputValue}`, { mode: 'cors' });
     const result = await response.json();
     // Call parseCurrentData function to extract and process some weatherData
     parseCurrentData(result);
