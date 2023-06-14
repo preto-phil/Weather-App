@@ -143,9 +143,7 @@ function assignWeatherValues(wData) {
   precipitationDiv.textContent = `${weatherData.precip_mm}mm`;
 
   let icon = weatherData.condition;
-  console.log(icon);
   icon = `./Icons${icon.substring(20)}`;
-  console.log(icon);
 
   conditionDiv.innerHTML = `<img src="${icon}" class="image" alt="${weatherData.condition.text}" />`;
   
@@ -211,7 +209,7 @@ function parseDailyData(result) {
 
   let dailyData = [];
 
-  for (let i = 1; i < 8; i++) {
+  for (let i = 1; i < 3; i++) {
     let results = result.forecast.forecastday[i];
 
     let icon = results.day.condition.icon;
