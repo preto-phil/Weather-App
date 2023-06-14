@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="images/x-icon" href="./Icons/weather (2).svg" />
+
+<script defer src="main.js"></script></head>
+<body>
+  
+
+
+  <header>
+    <div id="header">
+      <div id="title-div">
+        <div class="logo">
+          <img src="./Icons/weather (2).svg" alt="Weather">
+        </div>
+        <div class="title-text">Weather App</div>
+      </div>
+      <div id="search-div">
+        <input type="search" id="search" placeholder="Search Location...">
+        <button id="search-btn">Search</button>
+      </div>
+      <div id="toggle-div">
+        <div class="degree">
+          <div class="degree-c active">&degC</div>
+          <div class="degree-f">&degF</div>
+        </div>
+        <div class="wind">
+          <div class="wind-k active">kph</div>
+          <div class="wind-m">mph</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="current-parent">
+      <div id="current">
+        <div id="location"></div>
+        <div id="timezone"></div>
+    
+        <div id="temperature">
+          <div class="current-text">Temperature</div>
+          <div id="temperature-c" class="current-styling"></div>
+          <div id="temperature-f" class="current-styling"></div>
+        </div>
+    
+        <div id="realfeel">
+          <div class="current-text">Real Feel</div>
+          <div id="realfeel-c" class="current-styling"></div>
+          <div id="realfeel-f" class="current-styling"></div>
+        </div>
+    
+        <div id="humidity">
+          <div class="current-text">Humidity</div>
+          <div id="humidity-num" class="current-styling"></div>
+        </div>
+        <div id="wind">
+          <div class="current-text">Wind Speed</div>
+          <div id="wind-k" class="current-styling"></div>
+          <div id="wind-m" class="current-styling"></div>
+        </div>
+    
+        <div id="condition"></div>
+    
+        <div id="precipitation">
+          <div class="current-text">Precipitation</div>
+          <div id="precip-num" class="current-styling"></div>
+        </div>
+        <div id="cloud">
+          <div class="current-text">Cloud Coverage</div>
+          <div id="cloud-num" class="current-styling"></div>
+        </div>
+      </div>
+    </div>
+    <div id="hourly-parent">
+      <div id="h-forecast">Hourly Forecast</div>
+      <div id="hourly"></div>
+      <div class="dot-nav">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+    <div id="left-slider">
+      <a class="slider-btn previous" onclick="hourlySlider(-1)">❮</a>
+    </div>
+    <div id="right-slider">
+      <a class="slider-btn next" onclick="hourlySlider(1)">❯</a>
+    </div>
+    <div id="daily-parent">
+      <div id="d-forecast">Daily Forecast</div>
+      <div id="daily"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div id="footer">
+      <div id="footer-text">Created by preto-phil</div>
+      <div id="github-icon">
+        <img src="./Icons/gh-icon.svg" alt="Github Icon">
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+</body>
+</html>

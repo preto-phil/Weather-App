@@ -6,6 +6,7 @@ This is a weather application that allows users to search for the weather foreca
 
 The Weather App is deployed and can be accessed [here](https://preto-phil.github.io/Weather-App/).
 
+![Alt Text](./page-screenshot.png)
 
 ## Skills and Technologies Used
 
