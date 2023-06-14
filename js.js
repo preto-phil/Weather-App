@@ -108,8 +108,8 @@ function assignLocationValues(lData) {
   let timezone = `${locationData.timezone}`;
 
   const currentDate = new Date().toLocaleDateString(undefined, { timezone });
-  const dayOfWeek = new Date(currentDate).toLocaleDateString(undefined, { weekday: 'long' });
-  const month = new Date(currentDate).toLocaleDateString(undefined, { month: 'long' });
+  const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date(locationData.localTime).getDay()];
+  const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][new Date(locationData.localTime).getMonth()];
   let numDay = currentDate.slice(0, 2);
   let numYear = currentDate.slice(6);
   let time = locationData.localTime;
@@ -118,6 +118,7 @@ function assignLocationValues(lData) {
   locationDiv.textContent = `${locationData.city}, ${locationData.region}, ${locationData.country}`;
   timezoneDiv.textContent = `${dayOfWeek} ${numDay} ${month} ${numYear} | ${time}`;
 }
+
 
 // Function that adds text to weather from API data
 function assignWeatherValues(wData) {
