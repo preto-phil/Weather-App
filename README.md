@@ -2,6 +2,11 @@
 
 This is a weather application that allows users to search for the weather forecast of a specific location. It provides current weather conditions, hourly forecasts, and a 7-day forecast.
 
+## Deployment
+
+The Weather App is deployed and can be accessed [here](https://preto-phil.github.io/Weather-App/).
+
+
 ## Skills and Technologies Used
 
 - JavaScript
@@ -50,10 +55,8 @@ While the current version of the weather app provides basic functionality, there
 
 To run the Weather App locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/weather-app.git`
-2. Open the project directory.
-3. Open the `index.html` file in your preferred web browser.
-4. Start searching for weather forecasts by entering a location in the search input.
+1. Open the page deployed on Github.
+2. Start searching for weather forecasts by entering a location in the search input.
 
 ## License
 
