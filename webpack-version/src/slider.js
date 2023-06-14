@@ -28,7 +28,7 @@ export default function hourlySlider(index = 0) {
   }
 
   const dots = document.getElementsByClassName("dot");
-  for (x = 0; x < dots.length; x++) {
+  for (let x = 0; x < dots.length; x++) {
     dots[x].className = dots[x].className.replace(" active", "");
   }
   dots[sliderIndex - 1].className += " active";
