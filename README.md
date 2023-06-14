@@ -55,10 +55,5 @@ While the current version of the weather app provides basic functionality, there
 
 To run the Weather App locally, follow these steps:
 
-1. Open the page deployed on Github.
+1. Open the page deployed on [Github](https://preto-phil.github.io/Weather-App/).
 2. Start searching for weather forecasts by entering a location in the search input.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
