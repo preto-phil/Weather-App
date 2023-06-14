@@ -132,13 +132,13 @@ function parseHourlyData(result) {
 function parseDailyData(result) {
   let dailyData = [];
 
-  for (let i = 1; i < 8; i++) {
+  for (let i = 1; i < 3; i++) {
     // Check if forecast data is available for the current index
     if (result.forecast.forecastday[i]) {
       let results = result.forecast.forecastday[i];
 
-      let icon = results.day.condition.icon;
-      icon = `../src/Icons${icon.substring(20)}`;
+      let iconFilename = results.day.condition.icon.substring(20);
+      let iconPath = require(`./Icons/${iconFilename}`).default;
 
       let j = i - 1;
 
@@ -148,7 +148,7 @@ function parseDailyData(result) {
 
       dailyData[j] = {
         date: `${day} ${month}`,
-        condition: `<img src="${icon}" class="image" alt="${results.day.condition.text}" />`,
+        condition: `<img src="${iconPath}" class="image" alt="${results.day.condition.text}" />`,
         maxtemp_c: `Max:   ${Math.round(results.day.maxtemp_c)} \u00B0C`,
         mintemp_c: `Min:   ${Math.round(results.day.mintemp_c)} \u00B0C`,
         maxtemp_f: `Max:   ${Math.round(results.day.maxtemp_f)} \u2109`,
