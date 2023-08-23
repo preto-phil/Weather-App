@@ -220,8 +220,8 @@ function parseDailyData(result) {
       condition: `<img src="${icon}" class="image" alt="${results.day.condition.text}" />`,
       maxtemp_c: `Max:   ${Math.round(results.day.maxtemp_c)} \u00B0C`,
       mintemp_c: `Min:   ${Math.round(results.day.mintemp_c)} \u00B0C`,
-      maxtemp_f: `Max:   ${Math.round(results.day.maxtemp_f)} \u2109`,
-      mintemp_f: `Min:   ${Math.round(results.day.mintemp_f)} \u2109`,
+      maxtemp_f: `Max:   ${Math.round(results.day.maxtemp_f)} \u00B0F`,
+      mintemp_f: `Min:   ${Math.round(results.day.mintemp_f)} \u00B0F`,
       daily_chance_of_rain: `Rain:      ${results.day.daily_chance_of_rain}% `,
       maxwind_kph: `Wind:  ${Math.round(results.day.maxwind_kph)} kph`,
       maxwind_mph: `Wind:  ${Math.round(results.day.maxwind_mph)} mph`,
@@ -303,6 +303,7 @@ function hourlySlider(index = 0) {
     }
   }
 
+  // Change the styling of the active dot
   const dots = document.getElementsByClassName("dot");
   for (let x = 0; x < dots.length; x++) {
     dots[x].className = dots[x].className.replace(" active", "");
@@ -358,7 +359,6 @@ tempButton.addEventListener('click', () => {
 });
 
 function toggleWind() {
-
   const maxwind_kph = document.querySelectorAll('.maxwind_kph');
   const maxwind_mph = document.querySelectorAll('.maxwind_mph');
 
@@ -369,7 +369,6 @@ function toggleWind() {
       element.classList.toggle('hidden');
     });
   });
-
 
   const windDivK = document.getElementById('wind-k');
   const windDivM = document.getElementById('wind-m');
