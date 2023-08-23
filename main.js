@@ -54,7 +54,6 @@ async function getWeather() {
     parseHourlyData(result);
     parseDailyData(result);
     console.log(result);
-    return result;
   } catch (err) {
     throw new Error(`Error fetching weather data: ${err}`)
   }
@@ -95,11 +94,10 @@ function parseCurrentData(result) {
 }
 
 // Function that adds text to location from API data
-function assignLocationValues(lData) {
+function assignLocationValues(locationData) {
   // Get the reference to the HTML div elements
   const locationDiv = document.getElementById('location');
   const timezoneDiv = document.getElementById('timezone');
-  let locationData = lData;
   let timezone = `${locationData.timezone}`;
 
   const currentDate = new Date().toLocaleDateString(undefined, { timezone });
@@ -116,7 +114,7 @@ function assignLocationValues(lData) {
 
 
 // Function that adds text to weather from API data
-function assignWeatherValues(wData) {
+function assignWeatherValues(weatherData) {
   // Get the reference to the HTML div elements
   const temperatureDivC = document.getElementById('temperature-c');
   const temperatureDivF = document.getElementById('temperature-f');
@@ -128,7 +126,6 @@ function assignWeatherValues(wData) {
   const conditionDiv = document.getElementById('condition');
   const precipitationDiv = document.getElementById('precip-num');
   const cloudDiv = document.getElementById('cloud-num');
-  let weatherData = wData;
 
   temperatureDivC.textContent = `${Math.round(weatherData.temp_c)} \u00B0C`;
   temperatureDivF.textContent = `${Math.round(weatherData.temp_f)} \u00B0F`;
@@ -138,7 +135,7 @@ function assignWeatherValues(wData) {
   cloudDiv.textContent = `${weatherData.cloud}%`;
   windDivK.textContent = `${Math.round(weatherData.wind_k)} kph`;
   windDivM.textContent = `${Math.round(weatherData.wind_m)} mph`;
-  precipitationDiv.textContent = `${weatherData.precip_mm}mm`;
+  precipitationDiv.textContent = `${weatherData.precip_mm} mm`;
 
   let icon = weatherData.condition;
   icon = `./Icons${icon.substring(20)}`;
@@ -152,48 +149,47 @@ function parseHourlyData(result) {
   let hourlyData = [];
   let currentDateTime = result.current.last_updated;
   // trim everything before and after hour
-  let time = currentDateTime.slice(11, 13);
-  let timeRemaining = 24 - (24 - time);
-  let t = time;
-  if (time < 10) { t = Number(time.slice(-1)) };
-  let tr = 0;
+  let currentTime = currentDateTime.slice(11, 13);
+  let todayTime = currentTime;
+  if (todayTime < 10) { todayTime = Number(todayTime.slice(-1)) };
+  let tomorrowTime = 0;
 
   for (let i = 0; i < 24; i++) {
     
-    if (t < 24) {
+    if (todayTime < 24) {
       // day 0
-      let results = result.forecast.forecastday[0].hour[t];
+      let results = result.forecast.forecastday[0].hour[todayTime];
       let icon = results.condition.icon;
       icon = `./Icons${icon.substring(20)}`
 
       hourlyData[i] = {
-        hour: `${t}:00`,
+        hour: `${todayTime}:00`,
         condition: `<img src="${icon}" class="image" alt="${results.condition.text}" />`,
         temp_c: `${Math.round(results.temp_c)} \u00B0C`,
-        temp_f: `${Math.round(results.temp_f)} \u2109`,
+        temp_f: `${Math.round(results.temp_f)} \u00B0F`,
       }
-      t++;
-    } else if (tr < timeRemaining) {
+      todayTime++;
+    } else {
       // day 1
-      let results = result.forecast.forecastday[1].hour[tr];
+      let results = result.forecast.forecastday[1].hour[tomorrowTime];
 
       let icon = results.condition.icon;
       icon = `./Icons${icon.substring(20)}`
 
       let hour;
-      if (tr < 10) {
-        hour = `0${tr}`;
+      if (tomorrowTime < 10) {
+        hour = `0${tomorrowTime}`;
       } else {
-        hour = tr;
+        hour = tomorrowTime;
       }
 
       hourlyData[i] = {
         hour: `${hour}:00`,
         condition: `<img src="${icon}" class="image" alt="${results.condition.text}" />`,
         temp_c: `${Math.round(results.temp_c)} \u00B0C`,
-        temp_f: `${Math.round(results.temp_f)} \u2109`,
+        temp_f: `${Math.round(results.temp_f)} \u00B0F`,
       }
-      tr++;
+      tomorrowTime++;
     }
   }
 
