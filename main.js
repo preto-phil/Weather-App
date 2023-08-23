@@ -60,8 +60,6 @@ async function getWeather() {
   }
 }
 
-/* Should perhaps make use of destructuring for weatherData and locationData */
-
 // Function to parse weather data
 function parseCurrentData(result) {
   // Extract necessary weather data
@@ -133,9 +131,9 @@ function assignWeatherValues(wData) {
   let weatherData = wData;
 
   temperatureDivC.textContent = `${Math.round(weatherData.temp_c)} \u00B0C`;
-  temperatureDivF.textContent = `${Math.round(weatherData.temp_f)} \u2109`;
+  temperatureDivF.textContent = `${Math.round(weatherData.temp_f)} \u00B0F`;
   realFeelDivC.textContent = `${Math.round(weatherData.realFeel_c)} \u00B0C`;
-  realFeelDivF.textContent = `${Math.round(weatherData.realFeel_f)} \u2109`;
+  realFeelDivF.textContent = `${Math.round(weatherData.realFeel_f)} \u00B0F`;
   humidityDiv.textContent = `${weatherData.humidity}%`;
   cloudDiv.textContent = `${weatherData.cloud}%`;
   windDivK.textContent = `${Math.round(weatherData.wind_k)} kph`;
