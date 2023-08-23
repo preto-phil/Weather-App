@@ -303,15 +303,15 @@ function hourlySlider(index = 0) {
     }
   }
 
-  // Change the styling of the active dot
+  // Change the styling of the dots to reflect current active dot
   const dots = document.getElementsByClassName("dot");
   for (let x = 0; x < dots.length; x++) {
     dots[x].className = dots[x].className.replace(" active", "");
   }
   dots[sliderIndex - 1].className += " active";
-
 }
 
+// Function that toggles the values of the degree related div's between C and F
 function toggleDegree() {
   const temp_c = document.querySelectorAll('.temp_c');
   const temp_f = document.querySelectorAll('.temp_f');
@@ -339,7 +339,7 @@ function toggleDegree() {
   realFeelDivF.classList.toggle('hidden');
 }
 
-
+// Function that changes the styling of the degree div
 function toggleDegreeDiv() {
   const degree_c = document.getElementsByClassName('degree-c')[0];
   const degree_f = document.getElementsByClassName('degree-f')[0];
@@ -352,12 +352,14 @@ function toggleDegreeDiv() {
     degree_c.classList.add('active');}
 }
 
+// Event listener that calls the toggling of degree values and degree div
 const tempButton = document.querySelector('.degree');
 tempButton.addEventListener('click', () => {
   toggleDegree();
   toggleDegreeDiv();
 });
 
+// Function that toggles the values of the wind related div's between kph and mph
 function toggleWind() {
   const maxwind_kph = document.querySelectorAll('.maxwind_kph');
   const maxwind_mph = document.querySelectorAll('.maxwind_mph');
@@ -377,7 +379,7 @@ function toggleWind() {
   windDivM.classList.toggle('hidden');
 }
 
-
+// Function that changes the styling of the wind div
 function toggleWindDiv() {
   const wind_k = document.getElementsByClassName('wind-k')[0];
   const wind_m = document.getElementsByClassName('wind-m')[0];
@@ -390,6 +392,7 @@ function toggleWindDiv() {
     wind_k.classList.add('active');}
 }
 
+// Event listener that calls the toggling of wind values and wind div
 const windButton = document.querySelector('.wind');
 windButton.addEventListener('click', () => {
   toggleWind();
