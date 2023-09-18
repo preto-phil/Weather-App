@@ -100,7 +100,7 @@ function assignLocationValues(locationData) {
   const timezoneDiv = document.getElementById('timezone');
   let timezone = `${locationData.timezone}`;
 
-  const currentDate = new Date().toLocaleDateString(undefined, { timezone });
+  const currentDate = new Date().toLocaleDateString('en-UK', { timezone });
   const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date(locationData.localTime).getDay()];
   const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][new Date(locationData.localTime).getMonth()];
   let numDay = currentDate.slice(0, 2);
@@ -141,7 +141,6 @@ function assignWeatherValues(weatherData) {
   icon = `./Icons${icon.substring(20)}`;
 
   conditionDiv.innerHTML = `<img src="${icon}" class="image" alt="${weatherData.condition.text}" />`;
-  
 }
 
 function parseHourlyData(result) {
